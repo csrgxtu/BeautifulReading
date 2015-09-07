@@ -1,0 +1,39 @@
+[2015-08-31 02:49:47,023][INFO ][node                     ] [csrgxtu] version[1.7.1], pid[4238], build[b88f43f/2015-07-29T09:54:16Z]
+[2015-08-31 02:49:47,024][INFO ][node                     ] [csrgxtu] initializing ...
+[2015-08-31 02:49:47,103][INFO ][plugins                  ] [csrgxtu] loaded [], sites []
+[2015-08-31 02:49:47,141][INFO ][env                      ] [csrgxtu] using [1] data paths, mounts [[/home (/dev/sda3)]], net usable_space [50.3gb], net total_space [97gb], types [ext4]
+[2015-08-31 02:49:49,395][INFO ][node                     ] [csrgxtu] initialized
+[2015-08-31 02:49:49,395][INFO ][node                     ] [csrgxtu] starting ...
+[2015-08-31 02:49:49,475][INFO ][transport                ] [csrgxtu] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.1.83:9300]}
+[2015-08-31 02:49:49,487][INFO ][discovery                ] [csrgxtu] BeautifulReadingCluster/oVRuBiq8Tde12JWTkjN_zw
+[2015-08-31 02:49:53,257][INFO ][cluster.service          ] [csrgxtu] new_master [csrgxtu][oVRuBiq8Tde12JWTkjN_zw][csrgxtu][inet[/192.168.1.83:9300]], reason: zen-disco-join (elected_as_master)
+[2015-08-31 02:49:53,275][INFO ][http                     ] [csrgxtu] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.1.83:9200]}
+[2015-08-31 02:49:53,275][INFO ][node                     ] [csrgxtu] started
+[2015-08-31 02:49:53,298][INFO ][gateway                  ] [csrgxtu] recovered [0] indices into cluster_state
+[2015-08-31 02:56:11,450][INFO ][action.admin.cluster.node.shutdown] [csrgxtu] [cluster_shutdown]: requested, shutting down in [1s]
+[2015-08-31 02:56:12,451][INFO ][action.admin.cluster.node.shutdown] [csrgxtu] [cluster_shutdown]: done shutting down all nodes except master, proceeding to master
+[2015-08-31 02:56:12,454][INFO ][action.admin.cluster.node.shutdown] [csrgxtu] shutting down in [200ms]
+[2015-08-31 02:56:12,655][INFO ][action.admin.cluster.node.shutdown] [csrgxtu] initiating requested shutdown...
+[2015-08-31 02:56:12,655][INFO ][node                     ] [csrgxtu] stopping ...
+[2015-08-31 02:56:12,668][INFO ][node                     ] [csrgxtu] stopped
+[2015-08-31 02:56:12,668][INFO ][node                     ] [csrgxtu] closing ...
+[2015-08-31 02:56:12,672][INFO ][node                     ] [csrgxtu] closed
+[2015-08-31 20:52:30,965][INFO ][node                     ] [csrgxtu] version[1.7.1], pid[3436], build[b88f43f/2015-07-29T09:54:16Z]
+[2015-08-31 20:52:30,966][INFO ][node                     ] [csrgxtu] initializing ...
+[2015-08-31 20:52:31,069][INFO ][plugins                  ] [csrgxtu] loaded [], sites []
+[2015-08-31 20:52:31,113][INFO ][env                      ] [csrgxtu] using [1] data paths, mounts [[/home (/dev/sda3)]], net usable_space [49.8gb], net total_space [97gb], types [ext4]
+[2015-08-31 20:52:33,660][INFO ][node                     ] [csrgxtu] initialized
+[2015-08-31 20:52:33,660][INFO ][node                     ] [csrgxtu] starting ...
+[2015-08-31 20:52:33,756][INFO ][transport                ] [csrgxtu] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.1.83:9300]}
+[2015-08-31 20:52:33,772][INFO ][discovery                ] [csrgxtu] BeautifulReadingCluster/FPg1qk4pTxSScyQSXK4m3Q
+[2015-08-31 20:52:37,541][INFO ][cluster.service          ] [csrgxtu] new_master [csrgxtu][FPg1qk4pTxSScyQSXK4m3Q][csrgxtu][inet[/192.168.1.83:9300]], reason: zen-disco-join (elected_as_master)
+[2015-08-31 20:52:37,557][INFO ][http                     ] [csrgxtu] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.1.83:9200]}
+[2015-08-31 20:52:37,557][INFO ][node                     ] [csrgxtu] started
+[2015-08-31 20:52:37,585][INFO ][gateway                  ] [csrgxtu] recovered [0] indices into cluster_state
+[2015-08-31 20:54:43,423][INFO ][cluster.metadata         ] [csrgxtu] [blog] creating index, cause [auto(index api)], templates [], shards [5]/[1], mappings [user]
+[2015-08-31 20:54:43,782][INFO ][cluster.metadata         ] [csrgxtu] [blog] update_mapping [user] (dynamic)
+[2015-08-31 20:56:23,996][INFO ][cluster.metadata         ] [csrgxtu] [blog] update_mapping [post] (dynamic)
+[2015-08-31 22:36:47,095][INFO ][node                     ] [csrgxtu] stopping ...
+[2015-08-31 22:36:47,119][INFO ][node                     ] [csrgxtu] stopped
+[2015-08-31 22:36:47,119][INFO ][node                     ] [csrgxtu] closing ...
+[2015-08-31 22:36:47,125][INFO ][node                     ] [csrgxtu] closed

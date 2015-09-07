@@ -1,0 +1,1293 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Bookshelf Interface API
+host: dev_rio.beautifulreading.com
+schemes:
+  - https
+consumes:
+  - application/json
+  - text/xml
+produces:
+  - application/json
+  - text/html
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: HTTP Basic Authentication. Works over `HTTP` and `HTTPS`
+paths:
+  /beautilfulreading/bs/find:
+    post:
+      description: to find similar book according to book cover images in solr. 
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - image
+            properties:
+             image:
+               type: string
+             bsid:
+               type: string
+             location:
+               type: string
+             user_id:
+               type: string
+             meta:
+               type: string
+      responses:
+        200:
+          description:  return the book ful image if it found otherwise return null
+  /beautilfulreading/bs/findByBarcode:
+    post:
+      description: |
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            required:
+              - isbn
+              - user_id
+            properties:
+              isbn:
+                type: string
+              bsid:
+                type: string
+              meta:
+                type: array
+                items:
+                  type: string
+              location:
+                type: string
+              user_id:
+                type: string
+              type:
+                type: string
+                description: how images gained. It could either be scaned by barcode, book pin or book cover page
+      responses:
+        200: 
+          description: if the book is found by barcode, the book cover image will be returned
+  /beautilfulreading/bs/login:
+    post:
+      description: deprecated
+      responses:
+        200:
+          description: |
+  /beautilfulreading/bs/upload:
+    post:
+      description: not sure if deprecated. upload images for algorithm training purpose
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              image:
+                type: string
+              isbn:
+                type: string
+              imei:
+                type: string
+              user_id:
+                type: string
+      responses:
+        200:
+          description: If successful, this method returns an empty response body.
+  /beautilfulreading/bs/uploadByBarcode:
+    post:
+      description: upload book ful information to database and returns a bookful with bid
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          schema:
+            properties:
+                user_id:
+                  type: string
+                bookful:
+                  $ref: '#/definitions/bookful'
+      responses:
+        200:
+          description: if sucessful, bookful with bid will be returned
+          schema:
+            $ref: '#/definitions/bookful'
+  /beautilfulreading/bs/book/default:
+    get:
+      description: get bookshelf usage guide
+      security:
+        - basicAuth: []
+      responses:
+        200:
+          description: if success, content
+          schema:
+            type: object
+            properties:
+              bid:
+                type: string
+              spine:
+                type: string
+              cover:
+                type: string
+              title:
+                type: string
+              author:
+                type: string
+              publisher:
+                type: string
+              price:
+                type: string
+              rating:
+                type: string
+              ISBN:
+                type: string
+              pages:
+                type: string
+              summary:
+                type: string
+  /beautilfulreading/bs/bookdetail/bid/{bid}:
+    get:
+      description: get book ful by bid
+      security:
+        - basicAuth: []
+      parameters:
+        - name: bid
+          in: path
+          type: string
+          required: true
+          description: book id
+      responses:
+        200:
+          description: successful operation
+          schema:
+            allOf:
+              - $ref: '#/definitions/bookful'
+              - $ref: '#/definitions/BasicProperties'
+  /beautilfulreading/bs/bookdetail/isbn/{isbn}:
+    get:
+      description: get book ful by isbn
+      security:
+        - basicAuth: []
+      parameters:
+        - name: isbn
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: successful operation
+          schema:
+            allOf:
+              - $ref: '#/definitions/bookful'
+              - $ref: '#/definitions/BasicProperties'
+  /beautilfulreading/bs/book/isbn/{isbn}:
+    get:
+      description: to check weather an isbn is exist
+      security:
+        - basicAuth: []
+      parameters:
+        - name: isbn
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: isbn not exist
+        500:
+          description: isbn exist
+  /beautilfulreading/bs/bookmsg/isbn/{isbn}:
+    get:
+      description: get book detail by isbn
+      security:
+        - basicAuth: []
+      parameters:
+        - name: isbn
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/BookDetail'
+  /beautilfulreading/bs/translateall:
+    post:
+      description: deprecated
+      responses:
+        200:
+          description: |
+  /beautilfulreading/bs/bookshelf:
+    post:
+      description: add bookshelf for a specific user
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          required: true
+          in: body
+          schema:
+            type: object
+            required:
+              - user_id
+            properties:
+              name: 
+                type: string
+                description:  bookshelf name
+              user_id:
+                type: string
+      responses:
+        200:
+          description: sucessfule operation
+        500: 
+          description: bookshelf exist
+  /beautilfulreading/bs/bookshelf/favour:
+    put:
+      description: deprecated
+      responses:
+        200:
+          description: sucessful operation
+  /beautilfulreading/bs/bookshelf/favour/bsid/{bsid}:
+    get:
+      description: deprecated
+      parameters:
+        - name: bsid
+          type: string
+          in: path
+      responses:
+        200:
+          description: |
+  /beautilfulreading/bs/bookshelf/favour/user_id/{user_id}/{skip}/{limit}:
+    get:
+      description: deprecated
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+        - name: skip
+          in: path
+          type: string
+        - name: limit
+          in: path
+          type: string
+      responses:
+        200:
+          description: |
+  /beautilfulreading/bs/bookshelf/bsid/{bsid}:
+    get:
+      description: get bookshelf by id
+      security:
+        - basicAuth: []
+      parameters:
+        - name: bsid
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            $ref: '#/definitions/BookshelfDto'
+        200:
+          description: bookshelf not exists and returns empty data in response body
+          schema:
+            type: string
+            default: ''
+  /beautilfulreading/bs/bookshelf/user_id/{user_id}:
+    get:
+      description: find bookshelf by user
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: if sucessful, a list of bookshelf witll be returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BookshelfDto'
+        200:
+          description: bookshelf not exists and returns empty data in response body
+          schema:
+            type: string
+            default: ''
+  /beautilfulreading/bs/bookshelf:
+    put:
+      description: update bookshelf
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            required:
+              - bsid
+              - user_id
+              - floorDtos
+            properties:
+              bsid:
+                type: string
+              name:
+                type: string
+              desc:
+                type: string
+              user_id:
+                type: string
+              cover:
+                type: string
+              floorDtos:
+                type: array
+                items:
+                  $ref: '#/definitions/FloorDto'
+      responses:
+        200:
+          description: sucessful operation and returns bookshelf entity
+          schema:
+            $ref: '#/definitions/BookshelfEntity'
+        500:
+          description: bookshelf does not exist
+  /beautilfulreading/bs/bookshelf/{bsid}:
+    delete:
+      description: delete bookshelf by bsid
+      security:
+        - basicAuth: []
+      parameters:
+        - name: bsid
+          in: path
+          type: string
+          required: true
+          description: bookshelf id
+      responses:
+        200:
+          description: successful operation
+        500:
+          description: delete failed
+  /beautilfulreading/bs/library:
+    post:
+      description: deprecated
+      responses:
+        200:
+          description: |
+  /beautilfulreading/bs/statistics/user/book:
+    post:
+      description: 记录用户扫书行为
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              bid:
+                type: string
+              location:
+                type: string
+              user_id:
+                type: string
+      responses:
+        200:
+          description: sucessful operation
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment/user_id/{user_id}/{skip}/{limit}:
+    get:
+      description: 获取评论
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: skip
+          in: path
+          type: number
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          description: 每页多少个元素
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CommentDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment/sender_id/{sender_id}/{skip}/{limit}:
+    get:
+      description: 根据某人的ID获取所有评论
+      security:
+        - basicAuth: []
+      parameters:
+        - name: sender_id
+          in: path
+          type: string
+          required: true
+        - name: skip
+          in: path
+          type: number
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          description: 每页多少个元素
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CommentDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment/review_id/{review_id}/{skip}/{limit}:
+    get:
+      description: 获取某一书评的所有评论
+      security:
+        - basicAuth: []
+      parameters:
+        - name: review_id
+          in: path
+          type: string
+          required: true
+        - name: skip
+          in: path
+          type: number
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          description: |
+            每页多少个元素 
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CommentDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment/receiver_id/{receiver_id}/{skip}/{limit}:
+    get:
+      description: 根据某人ID获取所有的评论
+      security:
+        - basicAuth: []
+      parameters:
+        - name: receiver_id
+          in: path
+          type: string
+          required: true
+        - name: skip
+          in: path
+          type: number
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          description: 每页多少个元素
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CommentDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment/size/{review_id}:
+    get:
+      description: 根据评论获取该书的评论数
+      security:
+        - basicAuth: []
+      parameters:
+        - name: review_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: sucessful operation and returns the total number of reviews
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment/size:
+    post:
+      description: 根据一组书评ID获取相对应每本书的评论数
+      security:
+        - basicAuth: []
+      parameters:
+        - name: review_ids
+          in: body
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            type: array
+            items:
+              type: string
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment:
+    post:
+      description: 评论
+      security:
+        - basicAuth: []
+      parameters:
+        - name: comment
+          in: body
+          schema:
+            type: object
+            required:
+              - bid
+              - sender_id
+            properties:
+              bid: 
+                type: string
+              review_id:
+                type: string
+              sender_id:
+                type: string
+              receiver_id:
+                type: string
+              content:
+                type: string
+              sender_name:
+                type: string
+              receiver_name:
+                type: string
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            $ref: '#/definitions/CommentDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/comment/{comment_id}:
+    delete:
+      description: 根据评论 id删除评论
+      security:
+        - basicAuth: []
+      parameters:
+        - name: comment_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: sucessful
+        500:
+          description: failed
+  /beautilfulreading/umeng:
+    post:
+      description: 消息推送 deprecated
+      responses:
+        200:
+          description: |
+  /beautilfulreading/bs/book/review/review_id/{review_id}:
+    get:
+      description: 根据书评ID获取书评
+      security:
+        - basicAuth: []
+      parameters:
+        - name: review_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: sucessful 
+          schema:
+            $ref: '#/definitions/ReviewDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/bid/{bid}/{skip}/{limit}:
+    get:
+      description: 根据书ID获取该书的所有书评
+      security:
+        - basicAuth: []
+      parameters:
+        - name: bid
+          in: path
+          type: string
+          required: true
+          description: book id
+        - name: skip
+          in: path
+          type: number
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          description: 每页多少个元素
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ReviewDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/user_id/{user_id}/{skip}/{limit}:
+    get:
+      description: 获取某个用户的所有书评
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: user id
+        - name: skip
+          in: path
+          type: number
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          description: 每页多少个元素
+      responses:
+          200:
+            description: sucessful operation
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/ReviewDto'
+          500:
+            description: failed
+  /beautilfulreading/bs/book/review/size/bid/{bid}:
+    get:
+      description: 根据书ID获取书评数
+      security:
+        - basicAuth: []
+      parameters:
+        - name: bid
+          in: path
+          type: string
+          required: true
+          description: book id
+      responses:
+        200:
+          description: sucessful operation and returns the total number of review
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/size/bid:
+    post:
+      description: 获取多本书相对应的书评数
+      security:
+        - basicAuth: []
+      parameters:
+        - name: bids
+          in: body
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            type: array
+            items:
+              type: string
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review:
+    post:
+      description: 对某本书做书评
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            required:
+              - bid
+              - user_id
+              - content
+            properties:
+              bid:
+                type: string
+              user_id:
+                type: string
+              user_name:
+                type: string
+              content:
+                type: string
+              avatar:
+                type: string
+              mood:
+                type: string
+      responses:
+        200:
+          description: sucessful operation
+          schema:
+            $ref: '#/definitions/ReviewDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/book/review/{review_id}:
+    delete:
+      description: 根据书评ID删除shup
+      security:
+        - basicAuth: []
+      parameters:
+        - name: review_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+        500:
+          description: failed
+  /beautilfulreading/bs/book/user/{user_id}/{bid}:
+    get:
+      description: 查找某本书的共同用户
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+          description: 当前用户ID
+        - name: bid
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BaseUserDto'
+        500:
+          description: failed
+  /beautilfulreading/bs/user/alluser/{skip}/{limit}:
+    get:
+      description: 获取所有用户
+      security:
+        - basicAuth: []
+      parameters:
+        - name: skip
+          in: path
+          type: number
+          required: true
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          required: true
+          description: 每页多少个元素
+        - name: token
+          in: query
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDto'
+  /beautilfulreading/bs/user/follow:
+    put:
+      description: 关注
+      security:
+        - basicAuth: []
+      parameters:
+        - name: body
+          in: body
+          schema:
+            required:
+              - follow_id
+              - followed_id
+            properties:
+              follow_id:
+                type: string
+                description: 发起关注用户ID
+              followed_id:
+                type: string
+                description: 被关注者用户ID
+      responses:
+        200:
+          description: sucessful operation
+  /beautilfulreading/bs/user/follow/{follow_id}/{followed_id}:
+    delete:
+      description: 取消关注
+      security:
+        - basicAuth: []
+      parameters:
+        - name: follow_id
+          in: path
+          type: string
+          required: true
+          description: 发起关注用户ID
+        - name: followed_id
+          in: path
+          type: string
+          required: true
+          description: 被关注者ID
+      responses:
+        200:
+          description: sucessful operation
+  /beautilfulreading/bs/user/follow/{user_id}/{skip}/{limit}:
+    get:
+      description: 查找该用户所关注的人
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: skip
+          in: path
+          type: number
+          required: true
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          required: true
+          description: 每页多少个元素
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserDto'
+  /beautilfulreading/bs/user/follow/size/{user_id}:
+    get:
+      description: 获取某用户关注别人的数量(follow_count)以及被关注的数量(followed_count)
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              follow_count:
+                type: number
+              followed_count:
+                type: number
+  /beautilfulreading/bs/user/followed/{user_id}/{skip}/{limit}:
+    get:
+      description: 获取所有关注某个用户的用户
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: skip
+          in: path
+          type: number
+          required: true
+          description: 分页从第几个开始
+        - name: limit
+          in: path
+          type: number
+          required: true
+          description: 每页多少个元素
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+               $ref: '#/definitions/UserDto'
+  /beautilfulreading/bs/user/report/{user_id}:
+    get:
+      description: use to build reading user report in html page
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+  /beautilfulreading/bs/user/share/{user_id}:
+    get:
+      description: building report in html page 
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+  /beautilfulreading/bs/view/rank/{user_id}:
+    get:
+      description: 藏书排名
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+definitions:
+  bookful:
+    description: book full information entity
+    type: object
+    properties:
+      title:
+        type: string
+      subtitle:
+        type: string
+      author:
+        type: string
+      pubdate:
+        type: string
+      origin_title:
+        type: string
+      image:
+        type: string
+        description: UTF-8 string
+      images:
+        type: array
+        items:
+          type: string
+        description: three size of image
+      translator:
+        type: string
+      catalog:
+        type: string
+      pages:
+        type: string
+      isbn10:
+        type: string
+      isbn13:
+        type: string
+      author_intro:
+        type: string
+      summary:
+        type: string
+      price:
+        type: string
+      binding:
+        type: string
+      tags:
+        type: string
+      rating:
+        type: string
+      createduserid:
+        type: string
+      updateuserid:
+        type: string
+      bid:
+        type: string
+  BookDetail:
+    description: book detail entity
+    properties:
+        isbn:
+          type: string
+        packaging:
+          type: string
+        price:
+          type: string
+        title:
+          type: string
+        author:
+          type: string
+        length_style:
+          type: string
+        publish_place:
+          type: string
+        publisher_address:
+          type: string
+        publisher_name:
+          type: string
+        publisher_date:
+          type: string
+        print_address:
+          type: string
+        printer_address:
+          type: string
+        printer_name:
+          type: string
+        print_date:
+          type: string
+        pagesize:
+          type: string
+        images_detail:
+          type: string
+        size:
+          type: string
+        attachment:
+          type: string
+        n_series_title:
+          type: string
+        tied_series_title:
+          type: string
+        issn:
+          type: string
+        general_notes:
+          type: string
+        parallel_title: 
+          type: string
+        parallel_title_lang:
+          type: string
+        main_heading:
+          type: string
+        yopic_sub:
+          type: string
+        area_sub:
+          type: string
+        year_sub:
+          type: string
+        clc_sort_num:
+          type: string
+        clc_sort_edition:
+          type: string
+        caslc_sort_num:
+          type: string
+        caslc_sort_edition:
+          type: string
+        primary_responsible:
+          type: string
+        book_responsible:
+          type: string
+        country_code:
+          type: string
+        rganization_name:
+          type: string  
+  BasicProperties:
+    description: basic properties applies to other entity
+    properties:
+      status:
+        type: string
+        default: visible
+      version:
+        type: string
+      createuserid:
+        type: string
+        default: admin
+      updateuserid:
+        type: string
+        default: admin
+      createtime:
+        type: string
+      updatetime:
+        type: string
+  BookshelfDto:
+    description: dto for finding bookshelf by bsid
+    properties:
+      bsid:
+        type: string
+      user_id:
+        type: string
+      name: 
+        type: string
+      desc:
+        type: string
+      cover:
+        type: string
+      favour:
+        type: string
+      count:
+        type: string
+      updatetime:
+        type: string  
+      floorDto:
+        type: array
+        items:
+          $ref: '#/definitions/FloorDto'
+  FloorDto:
+    properties:
+      floor_id:
+        type: string
+      bsid:
+        type: string
+      name:
+        type: string
+      desc:
+        type: string
+      cover:
+        type: string
+      count:
+        type: string
+      user_id:
+        type: string
+      order:
+        type: string
+      libraryDto:
+        type: array
+        items:
+          $ref: '#/definitions/LibraryDto'
+  LibraryDto:
+    properties:
+      user_id:
+        type: string
+      bsid:
+        type: string
+      floor_id:
+        type: string
+      bid:
+        type: string
+      title:
+        type: string
+      author:
+        type: string
+      publisher:
+        type: string
+      cover:
+        type: string
+      price:
+        type: string
+      favour:
+        type: string
+      rating:
+        type: string
+      count:
+        type: string
+      updatetime:
+        type: string
+  BookshelfEntity:
+    properties:
+      user_id:
+        type: string
+      name:
+        type: string
+      desc:
+        type: string
+      cover:
+        type: string
+      favour:
+        type: number
+        default: 0
+      count:
+        type: number
+        default: 0
+      status:
+        type: string
+      version:
+        type: number
+  CommentDto:
+    properties:
+      title:
+        type: string
+      author:
+        type: string
+      publisher:
+        type: string
+      comment_id:
+        type: string
+      sender_avatar:
+        type: string
+      receiver_name:
+        type: string
+      sender_name:
+        type: string
+      content:
+        type: string
+      cover:
+        type: string
+      receiver_id:
+        type: string
+      sender_id:
+        type: string
+      review_id:
+        type: string
+      createtime:
+        type: string
+  ReviewDto:
+    properties:
+      review_id:
+        type: string
+      bid:
+        type: string
+      title:
+        type: string
+      author:
+        type: string
+      publisher:
+        type: string
+      user_id:
+        type: string
+      user_name:
+        type: string
+      content:
+        type: string
+      avatar:
+        type: string
+      cover:
+        type: string
+      mood:
+        type: string
+      count:
+        type: string
+      favour:
+        type: string
+      createtime:
+        type: string
+  BaseUserDto:
+    properties:
+      user_id:
+        type: string
+      user_name:
+        type: string
+      avatar:
+        type: string
+      mobile_number:
+        type: string
+      email:
+        type: string
+      createtime:
+        type: string
+  UserDto:
+    allOf:
+      - $ref: '#/definitions/BaseUserDto'
+      - type: object
+        properties:
+          follow:
+            type: boolean
+            description: 关注
+          followed:
+            type: boolean
+            description: 粉丝
