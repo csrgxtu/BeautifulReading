@@ -1,11 +1,6 @@
+var sys = require('sys');
+var jslitmus = require('./jslitmus/jslitmus.js');
 var sets = require('simplesets');
-
-// var s1 = new sets.Set(['A', 'B', 'C', 'D']);
-// var s2 = new sets.Set(['B', 'D', 'C', 'F', 'G', 'I', 'L']);
-
-// var s3 = s1.intersection(s2);
-// console.log(s3.array() + ':' + s3.size());
-
 
 // 使用别人实现的库
 /**
@@ -23,23 +18,6 @@ function intersection(array1, array2) {
   var s3 = s1.intersection(s2);
 
   // here return the length
-  return s3.size();
-}
-
-/**
- * union
- * get the length of the union sets of two array
- *
- * @param array1
- * @param array2
- * @return int
- */
-function union(array1, array2) {
-  var s1 = new sets.Set(array1);
-  var s2 = new sets.Set(array2);
-
-  var s3 = s1.union(s2);
-
   return s3.size();
 }
 
@@ -69,6 +47,23 @@ function intersectiona(array1, array2) {
   return counter;
 }
 
+/**
+ * union
+ * get the length of the union sets of two array
+ *
+ * @param array1
+ * @param array2
+ * @return int
+ */
+function union(array1, array2) {
+  var s1 = new sets.Set(array1);
+  var s2 = new sets.Set(array2);
+
+  var s3 = s1.union(s2);
+
+  return s3.size();
+}
+
 // 遍历方法， 将第二个数组中的元素无重复的加入第一个数组
 /**
  * uniona
@@ -93,10 +88,32 @@ function uniona(array1, array2) {
 }
 
 
-// test here
 var array1 = ['A', 'B', 'C', 'D'];
 var array2 = ['B', 'D', 'C', 'F', 'G', 'I', 'L'];
-console.log(intersection(array1, array2));
-console.log(intersectiona(array1, array2));
-console.log(union(array1, array2));
-console.log(uniona(array1, array2));
+
+jslitmus.test('INTERSECTION', function cb() {
+  intersection(array1, array2);
+});
+
+jslitmus.test('INTERSECTIONA', function cb() {
+  // intersectiona(array1, array2);
+  intersection(array1, array2);
+});
+
+jslitmus.test('UNION', function cb() {
+  union(array1, array2);
+});
+
+jslitmus.test('UNIONA', function cb() {
+  uniona(array1, array2);
+});
+
+
+// Log the test results
+jslitmus.on('complete', function(test) {
+    sys.log(test);
+});
+
+// Run it!
+jslitmus.runAll();
+// jslitmus.Test.run(1000, true);
