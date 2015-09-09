@@ -96,8 +96,8 @@ jslitmus.test('INTERSECTION', function cb() {
 });
 
 jslitmus.test('INTERSECTIONA', function cb() {
-  // intersectiona(array1, array2);
-  intersection(array1, array2);
+  intersectiona(array1, array2);
+  // intersection(array1, array2);
 });
 
 jslitmus.test('UNION', function cb() {
