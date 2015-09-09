@@ -4,8 +4,13 @@
   <script src="http://www.broofa.com/Tools/JSLitmus/JSLitmus.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
   <script src="intersection.js"></script>
+  <script src="setOps.js"></script>
 
 <script>
+function intersection(array1, array2) {
+  var so = setOps;
+  return so.intersection(array1, array2).length;
+}
 
 setTimeout(function(){
   arrays = new Array();
@@ -37,39 +42,63 @@ setTimeout(function(){
   bigArrays = arrays.slice(900);
 }, 10);
 
-JSLitmus.test('2 arrays of 10 numbers : intersectiona', function(count) {
+JSLitmus.test('2 arrays of 50 numbers : intersectiona', function(count) {
   while (count--) {
-    intersectiona(smallArrays[0], smallArrays[1]);
+    intersectiona(arrays[99], arrays[100]);
   }
 });
 
-JSLitmus.test('2 arrays of 10 numbers : array_intersect', function(count) {
+JSLitmus.test('2 arrays of 50 numbers : intersection', function(count) {
   while (count--) {
-        array_intersect(smallArrays[0], smallArrays[1]);
+    intersection(arrays[99], arrays[100]);
   }
 });
 
-JSLitmus.test('2 arrays of 10 numbers : array_big_intersect', function(count) {
+JSLitmus.test('2 arrays of 50 numbers : array_intersect', function(count) {
   while (count--) {
-        array_big_intersect(smallArrays[0], smallArrays[1]);
+        array_intersect(arrays[99], arrays[100]);
   }
 });
 
-JSLitmus.test('2 arrays of 10 numbers : prototype.js', function(count) {
+JSLitmus.test('2 arrays of 50 numbers : array_big_intersect', function(count) {
   while (count--) {
-       smallArrays[0].intersect(smallArrays[1]);
+        array_big_intersect(arrays[99], arrays[100]);
   }
 });
 
-JSLitmus.test('8000 arrays of 10 numbers : array_intersect', function(count) {
+JSLitmus.test('2 arrays of 50 numbers : prototype.js', function(count) {
   while (count--) {
-        array_intersect.apply(this,smallArrays);
+       arrays[99].intersect(arrays[100]);
   }
 });
 
-JSLitmus.test('8000 arrays of 10 numbers : array_big_intersect', function(count) {
+JSLitmus.test('2 arrays of 100 numbers : intersectiona', function(count) {
   while (count--) {
-        array_big_intersect.apply(this,smallArrays);
+    intersectiona(arrays[199], arrays[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 numbers : intersection', function(count) {
+  while (count--) {
+    intersection(arrays[199], arrays[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 numbers : array_intersect', function(count) {
+  while (count--) {
+        array_intersect(arrays[199], arrays[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 numbers : array_big_intersect', function(count) {
+  while (count--) {
+        array_big_intersect(arrays[199], arrays[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 numbers : prototype.js', function(count) {
+  while (count--) {
+       arrays[199].intersect(arrays[200]);
   }
 });
 
@@ -80,11 +109,20 @@ JSLitmus.test('2 arrays of 500 numbers : intersectiona', function(count) {
   }
 });
 
+JSLitmus.test('2 arrays of 500 numbers : intersection', function(count) {
+  while (count--) {
+    // intersectiona(arrays[999], arrays[1000]);
+    intersection(arrays[999], arrays[1000]);
+  }
+});
+
 JSLitmus.test('2 arrays of 500 numbers : array_intersect', function(count) {
   while (count--) {
         array_intersect(arrays[999], arrays[1000]);
   }
 });
+
+
 
 JSLitmus.test('2 arrays of 500 numbers : array_big_intersect', function(count) {
   while (count--) {
@@ -92,9 +130,120 @@ JSLitmus.test('2 arrays of 500 numbers : array_big_intersect', function(count) {
   }
 });
 
+
+
 JSLitmus.test('2 arrays of 500 numbers : PROTOTYPE.JS intersect', function(count) {
   while (count--) {
         arrays[999].intersect(arrays[1000]);
+  }
+});
+
+
+setTimeout(function() {
+  veryBigArrays = [[],[]];
+  for (var i=0;i<1000;i++){
+    veryBigArrays[0].push(parseInt(1000*Math.random()));
+    veryBigArrays[1].push(parseInt(1000*Math.random()))
+  }
+}, 10);
+
+JSLitmus.test('2 arrays of 1000 numbers : intersectiona', function(count) {
+  // console.log(veryBigArrays[0]);
+  while (count--) {
+    intersectiona(veryBigArrays[0], veryBigArrays[1]);
+  }
+});
+
+JSLitmus.test('2 arrays of 1000 numbers : intersection', function(count) {
+  // console.log(veryBigArrays[0]);
+  while (count--) {
+    intersection(veryBigArrays[0], veryBigArrays[1]);
+  }
+});
+
+JSLitmus.test('2 arrays of 1000 numbers : array_intersect', function(count) {
+  while (count--) {
+    array_intersect(veryBigArrays[0], veryBigArrays[1]);
+  }
+});
+
+JSLitmus.test('2 arrays of 1000 numbers : array_big_intersect', function(count) {
+  while (count--) {
+    array_big_intersect(veryBigArrays[0], veryBigArrays[1]);
+  }
+});
+
+// here comes strings
+JSLitmus.test('2 arrays of 50 strings : intersectiona', function(count) {
+  while (count--) {
+    intersectiona(strings[99], strings[100]);
+  }
+});
+
+JSLitmus.test('2 arrays of 50 strings : intersection', function(count) {
+  while (count--) {
+    intersection(strings[99], strings[100]);
+  }
+});
+
+JSLitmus.test('2 arrays of 50 strings : array_intersect', function(count) {
+  while (count--) {
+    array_intersect(strings[99], strings[100]);
+  }
+});
+
+JSLitmus.test('2 arrays of 50 strings : array_big_intersect', function(count) {
+  while (count--) {
+    array_big_intersect(strings[99], strings[100]);
+  }
+});
+
+JSLitmus.test('2 arrays of 50 strings : prototype.js', function(count) {
+  while (count--) {
+    strings[99].intersect(strings[100]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 strings : intersectiona', function(count) {
+  while (count--) {
+    intersectiona(strings[199], strings[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 strings : intersection', function(count) {
+  while (count--) {
+    intersection(strings[199], strings[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 10 strings : array_intersect', function(count) {
+  while (count--) {
+    array_intersect(strings[199], strings[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 strings : array_big_intersect', function(count) {
+  while (count--) {
+    array_big_intersect(strings[199], strings[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 100 strings : prototype.js', function(count) {
+  while (count--) {
+    strings[199].intersect(strings[200]);
+  }
+});
+
+JSLitmus.test('2 arrays of 500 strings : intersectiona', function(count) {
+  console.log(strings[999]);
+  while (count--) {
+    intersectiona(strings[999], strings[1000]);
+  }
+});
+
+JSLitmus.test('2 arrays of 500 strings : intersection', function(count) {
+  while (count--) {
+    intersection(strings[999], strings[1000]);
   }
 });
 
@@ -116,52 +265,6 @@ JSLitmus.test('2 arrays of 500 strings : PROTOTYPE.JS intersect', function(count
   }
 });
 
-JSLitmus.test('100 arrays of ~500 numbers : array_intersect', function(count) {
-  while (count--) {
-        array_intersect.apply(this, bigArrays);
-  }
-});
-
-JSLitmus.test('100 arrays of ~500 numbers : array_big_intersect', function(count) {
-  while (count--) {
-        array_big_intersect.apply(this, bigArrays);
-  }
-});
-
-
-JSLitmus.test('300 arrays of numbers : array_intersect', function() {
-        array_intersect.apply(this, arrays.slice(200,300));
-});
-
-JSLitmus.test('300 arrays of numbers : array_big_intersect', function() {
-        array_big_intersect.apply(this, arrays.slice(200,300));
-});
-
-setTimeout(function() {
-  veryBigArrays = [[],[]];
-  for (var i=0;i<100000;i++){
-    veryBigArrays[0].push(parseInt(1000*Math.random()));
-    veryBigArrays[1].push(parseInt(1000*Math.random()))
-  }
-}, 10);
-
-JSLitmus.test('2 arrays of 100000 numbers : intersectiona', function(count) {
-  while (count--) {
-    intersectiona(veryBigArrays[0], veryBigArrays[1]);
-  }
-});
-
-JSLitmus.test('2 arrays of 100000 numbers : array_intersect', function(count) {
-  while (count--) {
-    array_intersect(veryBigArrays[0], veryBigArrays[1]);
-  }
-});
-
-JSLitmus.test('2 arrays of 100000 numbers : array_big_intersect', function(count) {
-  while (count--) {
-    array_big_intersect(veryBigArrays[0], veryBigArrays[1]);
-  }
-});
 </script>
 
 </head>

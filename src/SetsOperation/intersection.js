@@ -24,6 +24,25 @@ function intersectiona(array1, array2) {
   return counter;
 }
 
+// 使用别人实现的库
+/**
+ * intersection
+ * get the length of the intersection sets of two array
+ *
+ * @param array1
+ * @param array2
+ * @return int
+ */
+function intersection(array1, array2) {
+  var s1 = new sets.Set(array1);
+  var s2 = new sets.Set(array2);
+
+  var s3 = s1.intersection(s2);
+
+  // here return the length
+  return s3.size();
+}
+
 function array_intersect() {
   var i, all, shortest, nShortest, n, len, ret = [], obj={}, nOthers;
   nOthers = arguments.length-1;
