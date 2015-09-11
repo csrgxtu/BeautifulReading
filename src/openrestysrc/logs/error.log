@@ -1,0 +1,45 @@
+2015/09/09 15:40:22 [emerg] 8189#0: no "events" section in configuration
+2015/09/09 16:13:25 [notice] 8282#0: signal process started
+2015/09/09 17:43:35 [notice] 8598#0: signal process started
+2015/09/09 17:43:35 [error] 8598#0: open() "/Users/archer/Documents/BeautifulReading/src/openrestysrc/logs/nginx.pid" failed (2: No such file or directory)
+2015/09/09 17:43:48 [notice] 8600#0: signal process started
+2015/09/09 17:43:48 [error] 8600#0: open() "/Users/archer/Documents/BeautifulReading/src/openrestysrc/logs/nginx.pid" failed (2: No such file or directory)
+2015/09/10 11:19:07 [alert] 9145#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 11:19:07 [emerg] 9145#0: bind() to 0.0.0.0:8080 failed (48: Address already in use)
+2015/09/10 11:19:07 [emerg] 9145#0: bind() to 0.0.0.0:8080 failed (48: Address already in use)
+2015/09/10 11:19:07 [emerg] 9145#0: bind() to 0.0.0.0:8080 failed (48: Address already in use)
+2015/09/10 11:19:07 [emerg] 9145#0: bind() to 0.0.0.0:8080 failed (48: Address already in use)
+2015/09/10 11:19:07 [emerg] 9145#0: bind() to 0.0.0.0:8080 failed (48: Address already in use)
+2015/09/10 11:19:07 [emerg] 9145#0: still could not bind()
+2015/09/10 11:22:33 [alert] 9159#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 11:22:33 [notice] 9159#0: signal process started
+2015/09/10 11:22:33 [alert] 8604#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 11:36:17 [alert] 9179#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 11:36:17 [notice] 9179#0: signal process started
+2015/09/10 11:36:17 [alert] 8604#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 11:36:42 [error] 9180#0: *6 lua entry thread aborted: runtime error: ...ulReading/src/openrestysrc/scripts/get_random_string.lua:7: attempt to concatenate field 'time' (a function value)
+stack traceback:
+coroutine 0:
+	...ulReading/src/openrestysrc/scripts/get_random_string.lua: in function <...ulReading/src/openrestysrc/scripts/get_random_string.lua:1>, client: 127.0.0.1, server: , request: "GET /?salt=archer HTTP/1.1", host: "localhost:8080"
+2015/09/10 11:37:19 [error] 9180#0: *7 lua entry thread aborted: runtime error: ...ulReading/src/openrestysrc/scripts/get_random_string.lua:7: attempt to concatenate field 'time' (a function value)
+stack traceback:
+coroutine 0:
+	...ulReading/src/openrestysrc/scripts/get_random_string.lua: in function <...ulReading/src/openrestysrc/scripts/get_random_string.lua:1>, client: 127.0.0.1, server: , request: "GET /?salt=archer HTTP/1.1", host: "localhost:8080"
+2015/09/10 12:09:45 [alert] 9224#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 12:09:45 [alert] 9224#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:19
+2015/09/10 12:09:45 [notice] 9224#0: signal process started
+2015/09/10 12:09:45 [alert] 8604#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 12:09:45 [alert] 8604#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:19
+2015/09/10 12:09:54 [error] 9225#0: *12 lua entry thread aborted: runtime error: ...eautifulReading/src/openrestysrc/scripts/decode_info.lua:7: bad argument #1 to 'exit' (number expected, got nil)
+stack traceback:
+coroutine 0:
+	[C]: in function 'exit'
+	...eautifulReading/src/openrestysrc/scripts/decode_info.lua:7: in function <...eautifulReading/src/openrestysrc/scripts/decode_info.lua:1>, client: 127.0.0.1, server: , request: "POST /info HTTP/1.1", host: "localhost:8080"
+2015/09/10 14:16:00 [alert] 9356#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 14:16:00 [alert] 9356#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:19
+2015/09/10 14:16:00 [alert] 9356#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:24
+2015/09/10 14:16:00 [notice] 9356#0: signal process started
+2015/09/10 14:16:00 [alert] 8604#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:14
+2015/09/10 14:16:00 [alert] 8604#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:19
+2015/09/10 14:16:00 [alert] 8604#0: lua_code_cache is off; this will hurt performance in /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf:24
+2015/09/10 14:16:23 [error] 9357#0: *16 kevent() reported that connect() failed (61: Connection refused), client: 127.0.0.1, server: , request: "GET /mysql HTTP/1.1", host: "localhost:8080"

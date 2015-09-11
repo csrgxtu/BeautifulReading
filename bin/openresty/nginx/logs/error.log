@@ -1,0 +1,2 @@
+2015/09/09 16:12:32 [notice] 8268#0: signal process started
+2015/09/09 16:12:32 [error] 8268#0: open() "/Users/archer/Documents/BeautifulReading/bin/openresty/nginx/logs/nginx.pid" failed (2: No such file or directory)

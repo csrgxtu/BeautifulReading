@@ -1,0 +1,3 @@
+/Users/archer/Documents/BeautifulReading/bin/openresty/nginx/sbin/nginx -p `pwd`/ -c /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf
+
+/Users/archer/Documents/BeautifulReading/bin/openresty/nginx/sbin/nginx -s stop -p `pwd`/ -c /Users/archer/Documents/BeautifulReading/src/openrestysrc/conf/nginx.conf
