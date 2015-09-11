@@ -1,0 +1,241 @@
+<Item xmlns="http://webservices.amazon.com/AWSECommerceService/2013-08-01">
+  <ASIN>B00XL1GR5M</ASIN>
+  <DetailPageURL>http://www.amazon.cn/%E5%AD%A4%E7%8B%AC%E6%98%AF%E7%94%9F%E5%91%BD%E7%9A%84%E7%A4%BC%E7%89%A9-%E5%91%A8%E5%9B%BD%E5%B9%B3/dp/B00XL1GR5M?SubscriptionId=AKIAJUE7O3QM7ZFIA67A&amp;tag=csrgxtu-23&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B00XL1GR5M</DetailPageURL>
+  <SalesRank>30</SalesRank>
+  <SmallImage>
+    <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL._SL75_.jpg</URL>
+    <Height Units="pixels">75</Height>
+    <Width Units="pixels">53</Width>
+  </SmallImage>
+  <MediumImage>
+    <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL._SL160_.jpg</URL>
+    <Height Units="pixels">160</Height>
+    <Width Units="pixels">114</Width>
+  </MediumImage>
+  <LargeImage>
+    <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL.jpg</URL>
+    <Height Units="pixels">500</Height>
+    <Width Units="pixels">356</Width>
+  </LargeImage>
+  <ImageSets>
+    <ImageSet Category="primary">
+      <SwatchImage>
+        <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL._SL30_.jpg</URL>
+        <Height Units="pixels">30</Height>
+        <Width Units="pixels">21</Width>
+      </SwatchImage>
+      <SmallImage>
+        <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">53</Width>
+      </SmallImage>
+      <ThumbnailImage>
+        <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL._SL75_.jpg</URL>
+        <Height Units="pixels">75</Height>
+        <Width Units="pixels">53</Width>
+      </ThumbnailImage>
+      <TinyImage>
+        <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL._SL110_.jpg</URL>
+        <Height Units="pixels">110</Height>
+        <Width Units="pixels">78</Width>
+      </TinyImage>
+      <MediumImage>
+        <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL._SL160_.jpg</URL>
+        <Height Units="pixels">160</Height>
+        <Width Units="pixels">114</Width>
+      </MediumImage>
+      <LargeImage>
+        <URL>http://ec4.images-amazon.com/images/I/51XsBy0rtrL.jpg</URL>
+        <Height Units="pixels">500</Height>
+        <Width Units="pixels">356</Width>
+      </LargeImage>
+    </ImageSet>
+  </ImageSets>
+  <ItemAttributes>
+    <Author>&#21608;&#22269;&#24179;</Author>
+    <Author>&#20313;&#31179;&#38632;</Author>
+    <Author>&#38472;&#24544;&#23454;</Author>
+    <Author>&#31561;</Author>
+    <Binding>&#24179;&#35013;</Binding>
+    <Brand>&#21271;&#20140;&#26102;&#20195;&#21326;&#35821;&#22270;&#20070;</Brand>
+    <Creator Role="&#20316;&#32773;">&#21608;&#22269;&#24179;</Creator>
+    <Creator Role="&#20316;&#32773;">&#20313;&#31179;&#38632;</Creator>
+    <Creator Role="&#20316;&#32773;">&#38472;&#24544;&#23454;</Creator>
+    <Creator Role="&#20316;&#32773;">&#31561;</Creator>
+    <Creator Role="&#32534;&#32773;">&#21608;&#26126;</Creator>
+    <Creator Role="&#32534;&#32773;">&#29579;&#23447;&#20161;</Creator>
+    <EAN>9787550013742</EAN>
+    <Edition>&#31532;1&#29256;</Edition>
+    <ISBN>7550013748</ISBN>
+    <Label>&#30334;&#33457;&#27954;&#25991;&#33402;&#20986;&#29256;&#31038;</Label>
+    <Languages>
+      <Language>
+        <Name>chinese</Name>
+        <Type>published</Type>
+      </Language>
+    </Languages>
+    <ListPrice>
+      <Amount>3600</Amount>
+      <CurrencyCode>CNY</CurrencyCode>
+      <FormattedPrice>&#65509; 36.00</FormattedPrice>
+    </ListPrice>
+    <Manufacturer>&#30334;&#33457;&#27954;&#25991;&#33402;&#20986;&#29256;&#31038;</Manufacturer>
+    <NumberOfPages>254</NumberOfPages>
+    <PackageDimensions>
+      <Height Units="inches">0.63</Height>
+      <Length Units="inches">9.06</Length>
+      <Weight Units="pounds">1.23</Weight>
+      <Width Units="inches">6.54</Width>
+    </PackageDimensions>
+    <ProductGroup>Book</ProductGroup>
+    <ProductTypeName>ABIS_BOOK</ProductTypeName>
+    <PublicationDate>2015-05-01</PublicationDate>
+    <Publisher>&#30334;&#33457;&#27954;&#25991;&#33402;&#20986;&#29256;&#31038;</Publisher>
+    <ReleaseDate>2015-05-31</ReleaseDate>
+    <Studio>&#30334;&#33457;&#27954;&#25991;&#33402;&#20986;&#29256;&#31038;</Studio>
+    <Title>&#23396;&#29420;&#26159;&#29983;&#21629;&#30340;&#31036;&#29289;</Title>
+  </ItemAttributes>
+  <OfferSummary>
+    <LowestNewPrice>
+      <Amount>2250</Amount>
+      <CurrencyCode>CNY</CurrencyCode>
+      <FormattedPrice>&#65509; 22.50</FormattedPrice>
+    </LowestNewPrice>
+    <TotalNew>13</TotalNew>
+    <TotalUsed>0</TotalUsed>
+    <TotalCollectible>0</TotalCollectible>
+    <TotalRefurbished>0</TotalRefurbished>
+  </OfferSummary>
+  <Offers>
+    <TotalOffers>1</TotalOffers>
+    <TotalOfferPages>1</TotalOfferPages>
+    <MoreOffersUrl>http://www.amazon.cn/gp/offer-listing/B00XL1GR5M?SubscriptionId=AKIAJUE7O3QM7ZFIA67A&amp;tag=csrgxtu-23&amp;linkCode=xm2&amp;camp=2025&amp;creative=165953&amp;creativeASIN=B00XL1GR5M</MoreOffersUrl>
+    <Offer>
+      <OfferAttributes>
+        <Condition>New</Condition>
+      </OfferAttributes>
+      <OfferListing>
+        <OfferListingId>6AO3ffDU8f2lQMyuPuHNPww5UIOhJnDGr7YkQA9bfl6DwziPk%2F%2FCxNGkJIEXySorsqVu2%2F9IDZnn4E43zbqPdzv6Bv%2BzDglu4oFTbnlpC%2FExh%2Bl2tryy4GNwMrkI6m6K</OfferListingId>
+        <Price>
+          <Amount>2340</Amount>
+          <CurrencyCode>CNY</CurrencyCode>
+          <FormattedPrice>&#65509; 23.40</FormattedPrice>
+        </Price>
+        <AmountSaved>
+          <Amount>1260</Amount>
+          <CurrencyCode>CNY</CurrencyCode>
+          <FormattedPrice>&#65509; 12.60</FormattedPrice>
+        </AmountSaved>
+        <PercentageSaved>35</PercentageSaved>
+        <Availability>&#36890;&#24120;&#22312; 24 &#23567;&#26102;&#20869;&#21457;&#36135;</Availability>
+        <AvailabilityAttributes>
+          <AvailabilityType>now</AvailabilityType>
+          <MinimumHours>0</MinimumHours>
+          <MaximumHours>0</MaximumHours>
+        </AvailabilityAttributes>
+        <IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+        <IsEligibleForPrime>0</IsEligibleForPrime>
+      </OfferListing>
+    </Offer>
+  </Offers>
+  <CustomerReviews>
+    <IFrameURL>http://www.amazon.cn/reviews/iframe?akid=AKIAJUE7O3QM7ZFIA67A&amp;alinkCode=xm2&amp;asin=B00XL1GR5M&amp;atag=csrgxtu-23&amp;exp=2015-09-12T05%3A25%3A41Z&amp;v=2&amp;sig=aQ%2FF5MviivNqiMj39wrLR0FJdRTCSf6qqavjpE0zcgE%3D</IFrameURL>
+    <HasReviews>true</HasReviews>
+  </CustomerReviews>
+  <EditorialReviews>
+    <EditorialReview>
+      <Source>&#20869;&#23481;&#31616;&#20171;</Source>
+      <Content>&#26412;&#20070;&#25910;&#24405;&#20102;&#21608;&#22269;&#24179;&#12289;&#20313;&#31179;&#38632;&#12289;&#38472;&#24544;&#23454;&#31561;&#20154;&#36817;&#26399;&#21019;&#20316;&#30340;&#25955;&#25991;&#20316;&#21697;&#12290;&#20182;&#20204;&#22312;&#20070;&#37324;&#35848;&#35770;&#20146;&#24773;&#12289;&#35848;&#35770;&#21451;&#35850;&#12289;&#35848;&#35770;&#22833;&#21435;&#30340;&#38738;&#26149;&#12289;&#20037;&#21035;&#30340;&#25925;&#20065;&#65292;&#36824;&#26377;&#29645;&#36149;&#30340;&#29233;&#24773;&#12290;&lt;br&gt;&#36825;&#20123;&#20316;&#23478;&#37324;&#26377;&#30340;&#36824;&#38738;&#26149;&#24180;&#23569;&#12289;&#26377;&#30340;&#24050;&#26159;&#32772;&#32779;&#20043;&#24180;&#12290;&#28982;&#32780;&#22312;&#20182;&#20204;&#23059;&#23059;&#36947;&#26469;&#30340;&#25991;&#23383;&#37324;&#65292;&#26080;&#19968;&#20363;&#22806;&#22320;&#37117;&#27969;&#38706;&#20986;&#25110;&#28145;&#25110;&#27973;&#30340;&#23396;&#29420;&#24863;&#12290;&lt;br&gt;&#19981;&#35770;&#29233;&#24773;&#22914;&#20309;&#32654;&#22937;&#12289;&#19990;&#30028;&#22914;&#20309;&#31934;&#24425;&#65292;&#23396;&#29420;&#37117;&#26159;&#20154;&#31867;&#24517;&#39035;&#21435;&#38754;&#23545;&#21644;&#25215;&#25285;&#30340;&#27704;&#24658;&#23487;&#21629;&#65292;&#27809;&#26377;&#20219;&#20309;&#20154;&#20219;&#20309;&#20107;&#33021;&#22815;&#23558;&#23427;&#25913;&#21464;&#12290;&lt;br&gt;&#20854;&#23454;&#23396;&#29420;&#24182;&#19981;&#21487;&#24597;&#65292;&#23427;&#33021;&#35753;&#20154;&#22362;&#24378;&#65292;&#35753;&#20154;&#33258;&#31435;&#65292;&#35753;&#20154;&#26500;&#24314;&#36215;&#33258;&#24049;&#30340;&#31934;&#31070;&#19990;&#30028;&#12290;&#32780;&#36825;&#20123;&#30495;&#27491;&#29420;&#31435;&#30340;&#31934;&#31070;&#19990;&#30028;&#65292;&#27491;&#26159;&#29616;&#23454;&#19990;&#30028;&#22914;&#27492;&#22810;&#20803;&#32780;&#20016;&#23500;&#30340;&#21407;&#22240;&#12290;&lt;br&gt;&#23545;&#32654;&#22909;&#20107;&#29289;&#30340;&#21916;&#27426;&#21644;&#25191;&#30528;&#65292;&#35753;&#24456;&#22810;&#20154;&#23581;&#23613;&#20102;&#23396;&#29420;&#65292;&#20063;&#21253;&#25324;&#20889;&#19979;&#36825;&#20123;&#25991;&#23383;&#30340;&#20316;&#23478;&#20204;&#12290;&#28982;&#32780;&#36825;&#20123;&#29983;&#21629;&#24213;&#19979;&#30340;&#23396;&#29420;&#65292;&#21364;&#32456;&#23558;&#20250;&#36824;&#32473;&#27599;&#20010;&#20154;&#26356;&#32431;&#31929;&#30340;&#32654;&#22909;&#19982;&#30495;&#23454;&#12290;&lt;br&gt;</Content>
+      <IsLinkSuppressed>0</IsLinkSuppressed>
+    </EditorialReview>
+  </EditorialReviews>
+  <BrowseNodes>
+    <BrowseNode>
+      <BrowseNodeId>659381051</BrowseNodeId>
+      <Name>&#20013;&#22269;&#24403;&#20195;</Name>
+      <Ancestors>
+        <BrowseNode>
+          <BrowseNodeId>658511051</BrowseNodeId>
+          <Name>&#21517;&#23478;&#20316;&#21697;&#21450;&#27427;&#36175;</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>658394051</BrowseNodeId>
+              <Name>&#25991;&#23398;</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>658391051</BrowseNodeId>
+                  <Name>&#31867;&#21035;</Name>
+                  <IsCategoryRoot>1</IsCategoryRoot>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>658390051</BrowseNodeId>
+                      <Name>&#22270;&#20070;</Name>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </Ancestors>
+    </BrowseNode>
+    <BrowseNode>
+      <BrowseNodeId>663238051</BrowseNodeId>
+      <Name>&#25955;&#25991;&#26434;&#33879;&#38598;</Name>
+      <Ancestors>
+        <BrowseNode>
+          <BrowseNodeId>658512051</BrowseNodeId>
+          <Name>&#20316;&#21697;&#38598;</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>658394051</BrowseNodeId>
+              <Name>&#25991;&#23398;</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>658391051</BrowseNodeId>
+                  <Name>&#31867;&#21035;</Name>
+                  <IsCategoryRoot>1</IsCategoryRoot>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>658390051</BrowseNodeId>
+                      <Name>&#22270;&#20070;</Name>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </Ancestors>
+    </BrowseNode>
+    <BrowseNode>
+      <BrowseNodeId>664802051</BrowseNodeId>
+      <Name>&#38543;&#31508;&#26434;&#25991;</Name>
+      <Ancestors>
+        <BrowseNode>
+          <BrowseNodeId>658515051</BrowseNodeId>
+          <Name>&#25955;&#25991;&#38543;&#31508;</Name>
+          <Ancestors>
+            <BrowseNode>
+              <BrowseNodeId>658394051</BrowseNodeId>
+              <Name>&#25991;&#23398;</Name>
+              <Ancestors>
+                <BrowseNode>
+                  <BrowseNodeId>658391051</BrowseNodeId>
+                  <Name>&#31867;&#21035;</Name>
+                  <IsCategoryRoot>1</IsCategoryRoot>
+                  <Ancestors>
+                    <BrowseNode>
+                      <BrowseNodeId>658390051</BrowseNodeId>
+                      <Name>&#22270;&#20070;</Name>
+                    </BrowseNode>
+                  </Ancestors>
+                </BrowseNode>
+              </Ancestors>
+            </BrowseNode>
+          </Ancestors>
+        </BrowseNode>
+      </Ancestors>
+    </BrowseNode>
+  </BrowseNodes>
+</Item>

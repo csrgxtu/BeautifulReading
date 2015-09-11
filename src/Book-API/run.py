@@ -19,7 +19,7 @@ def product():
         amazon_cn = AmazonAPI(AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY, AMAZON_ASSOC_TAG, region="CN")
         product = amazon_cn.lookup(IdType='ISBN', ItemId=isbn, SearchIndex='Books')
 
-        return product.title
+        return product.to_string()
     except:
         return 'fuck it'
 
