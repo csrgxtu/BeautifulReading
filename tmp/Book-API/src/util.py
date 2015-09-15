@@ -46,5 +46,8 @@ def saveMatrixToFile(outputFile, matrix):
 # @param outFile
 # @return nothing
 def appendstr2file(string, outFile):
-  with open(outFile, "a") as myFile:
-    myFile.write(string + "\n")
+  try:
+    with open(outFile, "a") as myFile:
+      myFile.write(string + "\n")
+  except UnicodeEncodeError:
+    pass

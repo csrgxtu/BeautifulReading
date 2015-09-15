@@ -97,9 +97,17 @@ class BookAPI(object):
                 tmpLst = item.find_all('span', class_ = '')
                 data[tmpLst[0].get_text()] = tmpLst[1].get_text().replace('\n', '').replace(' ', '')[0:5]
             except:
-                key = item.find_all('a')[1].get_text().replace(' ', '').replace('\n', '')
-                value = item.find_all('span', class_ = 'buylink-price')[0].get_text()[4:]
-                data[key] = value
+                try:
+                    key = item.find_all('a')[1].get_text().replace(' ', '').replace('\n', '')
+                    value = item.find_all('span', class_ = 'buylink-price')[0].get_text()[4:]
+                    data[key] = value
+                except IndexError:
+                    try:
+                        key = item.find('div', class_ = 'basic-info').find('span').get_text()
+                        value = item.find('span', class_ = 'buylink-price').find('span').get_text().replace(' ', '')
+                        data[key] = value
+                    except:
+                        print 'AttributeError'
         self.ResDict['data'] = data
 
         return 0
