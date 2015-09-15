@@ -8,6 +8,34 @@
 # Produced By BR(BeautifulReading)
 import json
 
+# loadIsbns
+# load isbn from file
+#
+# @param inputFile
+# @return isbns in list
+def loadIsbns(inputFile):
+  isbns = []
+  with open(inputFile, 'r') as myFile:
+    for line in myFile:
+      isbns.append(line.rstrip())
+
+  return isbns
+
+# appendlst2file
+# append a [] list to file
+#
+# @param lst
+# @param outFile
+# @return nothing
+def appendlst2file(lst, outFile):
+  with open(outFile, "a") as myFile:
+    myStr = ''
+    for item in lst:
+      myStr = myStr + item.encode('utf8') + ','
+    myFile.write(myStr + '\n')
+    # myFile.write(",".join(map(lambda x: str(x), lst)) + "\n".encode("UTF-8"))
+    myFile.close()
+
 def ldUserAgents(fileName):
     tmpBuf = ''
     with open(fileName, 'r') as f:

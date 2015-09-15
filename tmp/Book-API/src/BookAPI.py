@@ -60,7 +60,7 @@ class BookAPI(object):
         # self.ResDict = {}
         data = {}
         try:
-            soup = BeautifulSoup(self.HTML)
+            soup = BeautifulSoup(self.HTML, "lxml")
         except:
             self.ResDict['data'] = data
             self.ResDict['title'] = 'No Such Book'
@@ -95,16 +95,19 @@ class BookAPI(object):
         for item in snippetLst:
             try:
                 tmpLst = item.find_all('span', class_ = '')
-                data[tmpLst[0].get_text()] = tmpLst[1].get_text().replace('\n', '').replace(' ', '')[0:5]
+                data[tmpLst[0].get_text()] = tmpLst[1].get_text().replace('\n', '').replace(' ', '')[:-1]
+                # print 'DEBUG: ', tmpLst[1].get_text().replace('\n', '').replace(' ', '')[:-1]
             except:
                 try:
                     key = item.find_all('a')[1].get_text().replace(' ', '').replace('\n', '')
                     value = item.find_all('span', class_ = 'buylink-price')[0].get_text()[4:]
+                    print 'DEBUG: ', value
                     data[key] = value
                 except IndexError:
                     try:
                         key = item.find('div', class_ = 'basic-info').find('span').get_text()
                         value = item.find('span', class_ = 'buylink-price').find('span').get_text().replace(' ', '')
+                        print 'DEBUG: ', value
                         data[key] = value
                     except:
                         print 'AttributeError'
