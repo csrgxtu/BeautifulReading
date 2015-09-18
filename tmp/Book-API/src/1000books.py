@@ -30,8 +30,8 @@ def lstUtf8(lst):
 
 def run():
     user_agents = ldUserAgents('./UserAgentString.json')
-    #bookinfos = loadMatrixFromFile('./kaijuannodump.csv')
-    bookinfos = loadMatrixFromFile(sys.argv[1])
+    bookinfos = loadMatrixFromFile('./kaijuannodump.csv')
+    #bookinfos = loadMatrixFromFile(sys.argv[1])
     # newbookinfos = []
     sellers = ['亚马逊', '京东', '当当', '北发', '淘书', '博库', '文轩', '中国图书', 'China-pub']
 
