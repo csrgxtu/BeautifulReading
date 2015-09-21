@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#
+# coding=utf-8
 # Author: Archer Reilly
 # Date: 21/Sep/2015
 # File: ISBN2ASIN.py
@@ -7,14 +7,16 @@
 #
 # Produced By BR(BeautifulReading)
 from Download import Download
-from Util import *
+from util import *
 from itertools import cycle
+import json
+from time import sleep
+from ASINParser import ASINParser
 
 class ISBN2ASIN(object):
     APPIDS = None
     ISBNS = None
     APPIDS_CYCLE = None
-    # http://csrgxtua-01.appspot.com/url?url=http://www.amazon.cn/s/ref=nb_sb_noss?__mk_zh_CN=亚马逊网站&field-keywords=
 
     def __init__(self, appids, isbns):
         self.APPIDS = appids
@@ -22,6 +24,16 @@ class ISBN2ASIN(object):
         self.APPIDS_CYCLE = cycle(self.APPIDS)
 
     def run(self):
-        for isbn in ISBNS:
-            url = 'http://' + self.APPIDS_CYCLE.next() + '.appsport.com/url?url=http://www.amazon.cn/s/ref=nb_sb_noss?__mk_zh_CN=亚马逊网站&field-keywords='
+        for isbn in self.ISBNS:
+            url = 'http://' + self.APPIDS_CYCLE.next() + '.appspot.com/url?url=http://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=' + isbn
             print url
+            d = Download(url)
+            if d.doRequest():
+                print 'ERROR: ', isbn, 'NERR'
+                continue
+
+            asin = ASINParser(d.getSOURCE())
+            if asin.getAsin():
+                print 'INFO: ', isbn, asin.getAsin()
+            else:
+                print 'WARN: ', isbn, 'NOER'
