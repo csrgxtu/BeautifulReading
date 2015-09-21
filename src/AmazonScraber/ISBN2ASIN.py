@@ -25,8 +25,7 @@ class ISBN2ASIN(object):
 
     def run(self):
         for isbn in self.ISBNS:
-            url = 'http://' + self.APPIDS_CYCLE.next() + '.appspot.com/url?url=http://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=' + isbn
-            print url
+            url = 'http://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=' + isbn
             d = Download(url)
             if d.doRequest():
                 print 'ERROR: ', isbn, 'NERR'
