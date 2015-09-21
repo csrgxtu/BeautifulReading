@@ -29,10 +29,13 @@ class ISBN2ASIN(object):
             d = Download(url)
             if d.doRequest():
                 print 'ERROR: ', isbn, 'NERR'
+                appendstr2file(isbn, './NERR.txt')
                 continue
 
             asin = ASINParser(d.getSOURCE())
             if asin.getAsin():
                 print 'INFO: ', isbn, asin.getAsin()
+                appendstr2file(isbn, './OK.txt')
             else:
                 print 'WARN: ', isbn, 'NOER'
+                appendstr2file(isbn, './NOER.txt')
