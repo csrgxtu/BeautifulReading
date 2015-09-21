@@ -35,7 +35,7 @@ class ISBN2ASIN(object):
             asin = ASINParser(d.getSOURCE())
             if asin.getAsin():
                 print 'INFO[' + processName + ']: ', isbn, asin.getAsin()
-                appendstr2file(isbn, './OK.txt')
+                appendstr2file(isbn + ',' + asin.getAsin(), './OK.txt')
             else:
                 print 'WARN[' + processName + ']: ', isbn, 'NOER'
                 appendstr2file(isbn, './NOER.txt')
