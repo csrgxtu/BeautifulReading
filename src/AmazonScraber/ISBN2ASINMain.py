@@ -21,15 +21,16 @@ if __name__ == '__main__':
     # Usage: ISBN2ASINMain.py appids.txt isbns.data coreNum
     if len(sys.argv) != 4:
         print 'Usage: ISBN2ASINMain.py appids.txt isbns.data coreNum'
+        sys.exit(1)
 
     appids = loadIsbns(sys.argv[1])
     isbns = loadIsbns(sys.argv[2])
 
     jobs = []
 
-    step = len(isbns)/sys.argv[3]
-    for i in range(sys.argv[3]):
-        if i == range(sys.argv[3])[-1]:
+    step = len(isbns)/int(sys.argv[3])
+    for i in range(int(sys.argv[3])):
+        if i == range(int(sys.argv[3]))[-1]:
             start = i * step
             end = len(isbns)
         else:
