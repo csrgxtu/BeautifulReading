@@ -23,19 +23,19 @@ class ISBN2ASIN(object):
         self.ISBNS = isbns
         self.APPIDS_CYCLE = cycle(self.APPIDS)
 
-    def run(self):
+    def run(self, processName='MainProcess'):
         for isbn in self.ISBNS:
             url = 'http://www.amazon.cn/s/ref=nb_sb_noss?field-keywords=' + isbn
             d = Download(url)
             if d.doRequest():
-                print 'ERROR: ', isbn, 'NERR'
+                print 'ERROR[' + processName + ']: ', isbn, 'NERR'
                 appendstr2file(isbn, './NERR.txt')
                 continue
 
             asin = ASINParser(d.getSOURCE())
             if asin.getAsin():
-                print 'INFO: ', isbn, asin.getAsin()
+                print 'INFO[' + processName + ']: ', isbn, asin.getAsin()
                 appendstr2file(isbn, './OK.txt')
             else:
-                print 'WARN: ', isbn, 'NOER'
+                print 'WARN[' + processName + ']: ', isbn, 'NOER'
                 appendstr2file(isbn, './NOER.txt')

@@ -9,9 +9,32 @@
 # Produced By BR(BeautifulReading)
 from ISBN2ASIN import ISBN2ASIN
 from util import *
+from multiprocessing import Process, current_process
+import sys
+
+def run(appids, isbns):
+    # print current_process().name
+    i = ISBN2ASIN(appids, isbns)
+    i.run(current_process().name)
 
 if __name__ == '__main__':
-    appids = loadIsbns('appids.txt')
-    isbns = loadIsbns('isbns.data')
-    i = ISBN2ASIN(appids, isbns)
-    i.run()
+    # Usage: ISBN2ASINMain.py appids.txt isbns.data coreNum
+    if len(sys.argv) != 4:
+        print 'Usage: ISBN2ASINMain.py appids.txt isbns.data coreNum'
+
+    appids = loadIsbns(sys.argv[1])
+    isbns = loadIsbns(sys.argv[2])
+
+    jobs = []
+
+    step = len(isbns)/sys.argv[3]
+    for i in range(sys.argv[3]):
+        if i == range(sys.argv[3])[-1]:
+            start = i * step
+            end = len(isbns)
+        else:
+            start = i * step
+            end = i * step + step
+        p = Process(target=run, args=(appids, isbns[start:end], ))
+        jobs.append(p)
+        p.start()
