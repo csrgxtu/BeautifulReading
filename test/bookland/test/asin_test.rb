@@ -10,6 +10,8 @@ class TestASIN < MiniTest::Unit::TestCase
 
   def test_validates_proprietary_asins
     ASIN.valid?('B000J8VLEC')
+    puts "DEBUG: 9787539966236"
+    puts ASIN.from_isbn('9787539966236')
   end
 
   def test_does_not_validate_if_not_10_digits
