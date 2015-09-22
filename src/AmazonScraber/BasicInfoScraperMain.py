@@ -13,7 +13,7 @@ import sys
 from multiprocessing import Process, current_process
 from BasicInfoScraper import BasicInfoScraper
 
-def run(appids, asins):
+def run(asins):
     # print current_process().name
     i = BasicInfoScraper(asins)
     i.run(current_process().name)

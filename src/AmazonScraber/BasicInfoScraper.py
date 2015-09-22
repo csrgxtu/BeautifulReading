@@ -23,16 +23,16 @@ class BasicInfoScraper(object):
             url = 'http://www.amazon.cn/dp/' + asin
             d = Download(url)
             if d.doRequest():
-                print 'ERROR[' + processName + ']: ', asins, 'NERR'
+                print 'ERROR[' + processName + ']: ', asin, 'NERR'
                 appendstr2file(asins, './NERRBasicInfo.txt')
                 continue
 
             b = BasicInfoParser(d.getSOURCE())
-            jsonRes = b.run()
+            jsonRes = b.basicInfo()
 
             if json.loads(jsonRes):
-                print 'info[' + processName + ']: ', asins
+                print 'info[' + processName + ']: ', asin
                 appendstr2file(jsonRes, './OKBasicInfo.txt')
             else:
-                print 'WARN[' + processName + ']: ', asins, 'NOER'
+                print 'WARN[' + processName + ']: ', asin, 'NOER'
                 appendstr2file(asins, './NOERBasicInfo.txt')
