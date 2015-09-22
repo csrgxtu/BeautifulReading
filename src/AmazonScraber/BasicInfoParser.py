@@ -28,13 +28,17 @@ class BasicInfoParser(object):
 
         for item in contentElement.find('ul').find_all('li'):
             # print item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', '')
-            if item.find('b').get_text().encode('UTF-8') == '外文书名:':
+            # if item.find('b').get_text().encode('UTF-8') == '外文书名:':
                 # print item.find('b').get_text().encode('UTF-8'), item.find('a').get_text()
-                infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text()
-                continue
+                # infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text()
+                # continue
 
-            if item.find('b').get_text().encode('UTF-8') == '丛书名:':
+            # if item.find('b').get_text().encode('UTF-8') == '丛书名:':
                 # print item.find('b').get_text().encode('UTF-8'), item.find('a').get_text()
+                # infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text()
+                # continue
+
+            if item.find('b').get_text().encode('UTF-8') in ['外文书名:', '丛书名:']:
                 infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text()
                 continue
 
