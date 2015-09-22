@@ -39,11 +39,11 @@ class BasicInfoParser(object):
                 # continue
 
             if item.find('b').get_text().encode('UTF-8') in ['外文书名:', '丛书名:']:
-                infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text()
+                infoJson[item.find('b').get_text()] = item.find('a').get_text()
                 continue
 
             if item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', '') in keys:
                 # print item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', ''), item.find('b').next_sibling.replace('\n', '').replace(' ', '')
-                infoJson[item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', '')] = item.find('b').next_sibling.replace('\n', '').replace(' ', '')
+                infoJson[item.find('b').get_text().replace('\n', '').replace(' ', '')] = item.find('b').next_sibling.replace('\n', '').replace(' ', '')
 
         return json.dumps(infoJson)

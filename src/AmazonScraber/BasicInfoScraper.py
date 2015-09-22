@@ -24,7 +24,7 @@ class BasicInfoScraper(object):
             d = Download(url)
             if d.doRequest():
                 print 'ERROR[' + processName + ']: ', asin, 'NERR'
-                appendstr2file(asins, './NERRBasicInfo.txt')
+                appendstr2file(asin, './NERRBasicInfo.txt')
                 continue
 
             b = BasicInfoParser(d.getSOURCE())
@@ -32,7 +32,7 @@ class BasicInfoScraper(object):
 
             if json.loads(jsonRes):
                 print 'info[' + processName + ']: ', asin
-                appendstr2file(jsonRes, './OKBasicInfo.txt')
+                appendstr2file(jsonRes.decode('UTF-8'), './OKBasicInfo.txt')
             else:
                 print 'WARN[' + processName + ']: ', asin, 'NOER'
-                appendstr2file(asins, './NOERBasicInfo.txt')
+                appendstr2file(asin, './NOERBasicInfo.txt')
