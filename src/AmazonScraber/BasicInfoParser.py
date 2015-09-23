@@ -27,23 +27,14 @@ class BasicInfoParser(object):
             return infoJson
 
         for item in contentElement.find('ul').find_all('li'):
-            # print item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', '')
-            # if item.find('b').get_text().encode('UTF-8') == '外文书名:':
-                # print item.find('b').get_text().encode('UTF-8'), item.find('a').get_text()
-                # infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text()
-                # continue
-
-            # if item.find('b').get_text().encode('UTF-8') == '丛书名:':
-                # print item.find('b').get_text().encode('UTF-8'), item.find('a').get_text()
-                # infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text()
-                # continue
-
             if item.find('b').get_text().encode('UTF-8') in ['外文书名:', '丛书名:']:
-                infoJson[item.find('b').get_text()] = item.find('a').get_text()
+                infoJson[item.find('b').get_text().encode('UTF-8')] = item.find('a').get_text().encode('UTF-8')
+                # infoJson[['外文书名:', '丛书名:'][['外文书名:', '丛书名:'].index(item.find('b').get_text().encode('UTF-8'))]] = item.find('a').get_text()
                 continue
 
             if item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', '') in keys:
                 # print item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', ''), item.find('b').next_sibling.replace('\n', '').replace(' ', '')
-                infoJson[item.find('b').get_text().replace('\n', '').replace(' ', '')] = item.find('b').next_sibling.replace('\n', '').replace(' ', '')
+                infoJson[item.find('b').get_text().encode('UTF-8').replace('\n', '').replace(' ', '')] = item.find('b').next_sibling.encode('UTF-8').replace('\n', '').replace(' ', '')
 
-        return json.dumps(infoJson)
+        # return json.dumps(infoJson)
+        return infoJson

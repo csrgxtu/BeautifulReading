@@ -32,7 +32,7 @@ class BasicInfoScraper(object):
 
             if json.loads(jsonRes):
                 print 'info[' + processName + ']: ', asin
-                appendstr2file(jsonRes.decode('UTF-8'), './OKBasicInfo.txt')
+                appendstr2file(jsonRes, './OKBasicInfo.txt')
             else:
                 print 'WARN[' + processName + ']: ', asin, 'NOER'
                 appendstr2file(asin, './NOERBasicInfo.txt')
