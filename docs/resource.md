@@ -3,3 +3,7 @@
 [Sed 20 examples to delete and remove character in file](http://www.theunixschool.com/2014/08/sed-examples-remove-delete-chars-from-line-file.html)  
 [Python Concurrent Programming](http://dataunion.org/20237.html)  
 [Fucking character problems Python](http://stackoverflow.com/questions/934160/write-to-utf-8-file-in-python)  
+[Giving Away Your Passwords OAuth](http://blog.varonis.com/giving-away-your-passwords/)  
+[Introduction to OAuth (in Plain English)](http://blog.varonis.com/introduction-to-oauth/)  
+[An Introduction to OAuth 2](http://www.slideshare.net/aaronpk/an-introduction-to-oauth-2)  
+[Secure Your REST API (The Right Way)](http://www.slideshare.net/stormpath/secure-your-rest-api-the-right-way?related=1)  
