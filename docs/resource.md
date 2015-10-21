@@ -11,4 +11,11 @@
 [如何获取（GET）一杯咖啡——星巴克REST案例分析](http://www.infoq.com/cn/articles/webber-rest-workflow)  
 [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)  
 [浅谈翻译的两个基本问题](http://www.luanxiang.org/blog/archives/1519.html)  
+[flow-solution-of-front-back-end-development](https://github.com/supersheep/hexoblog/blob/master/source/_posts/flow-solution-of-front-back-end-development.md)  
+[合作开发以后须知](http://www.douban.com/note/400152446/)  
+[ app后端开发一：swagger-ui教程-构建api接口文档工具](http://blog.csdn.net/hel12he/article/details/46547863)  
+[如何编写 API 的文档？](http://segmentfault.com/q/1010000002523945)  
+[后台不写文档？削Ta！](http://www.jianshu.com/p/0fc1163da6a9/comments/551390)  
+[如何编写 API 的文档？](http://segmentfault.com/q/1010000002523945)  
+
 
