@@ -7,3 +7,5 @@
 [Introduction to OAuth (in Plain English)](http://blog.varonis.com/introduction-to-oauth/)  
 [An Introduction to OAuth 2](http://www.slideshare.net/aaronpk/an-introduction-to-oauth-2)  
 [Secure Your REST API (The Right Way)](http://www.slideshare.net/stormpath/secure-your-rest-api-the-right-way?related=1)  
+[REST服务开发实战](http://www.infoq.com/cn/articles/dt-rest-service)  
+[如何获取（GET）一杯咖啡——星巴克REST案例分析](http://www.infoq.com/cn/articles/webber-rest-workflow)  
