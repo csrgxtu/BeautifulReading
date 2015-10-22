@@ -21,5 +21,5 @@
 [jwt](http://jwt.io/)  
 [Securing a Restful JSON API with JWT Authentication in GO](http://blog.brainattica.com/restful-json-api-jwt-go/)  
 [JSON Web Tokens and Go](http://dghubble.com/blog/posts/json-web-tokens-and-go/)  
-
-
+[Basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)  
+[The API Authentication](https://github.com/lei-cao/beego-in-action/blob/master/en/api-authentication.md)  
