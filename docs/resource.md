@@ -17,5 +17,9 @@
 [如何编写 API 的文档？](http://segmentfault.com/q/1010000002523945)  
 [后台不写文档？削Ta！](http://www.jianshu.com/p/0fc1163da6a9/comments/551390)  
 [如何编写 API 的文档？](http://segmentfault.com/q/1010000002523945)  
+[JSON Web Token](https://en.wikipedia.org/wiki/JSON_Web_Token)  
+[jwt](http://jwt.io/)  
+[Securing a Restful JSON API with JWT Authentication in GO](http://blog.brainattica.com/restful-json-api-jwt-go/)  
+[JSON Web Tokens and Go](http://dghubble.com/blog/posts/json-web-tokens-and-go/)  
 
 
