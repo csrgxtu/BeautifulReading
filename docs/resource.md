@@ -23,3 +23,5 @@
 [JSON Web Tokens and Go](http://dghubble.com/blog/posts/json-web-tokens-and-go/)  
 [Basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)  
 [The API Authentication](https://github.com/lei-cao/beego-in-action/blob/master/en/api-authentication.md)  
+[Cookies vs Tokens. Getting auth right with Angular.JS](https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/)  
+[https://auth0.com/blog/2014/01/27/ten-things-you-should-know-about-tokens-and-cookies/#token-size](https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/)  
