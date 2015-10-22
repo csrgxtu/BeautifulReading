@@ -1,0 +1,374 @@
+swagger: '2.0'
+info:
+  title: 认证系统用户 API
+  description: 这是认证系统用户部分的接口
+  version: 1.0.0
+host: accounts.beautifulreading.com
+schemes:
+  - http
+basePath: /
+produces:
+  - application/json
+paths:
+  /auth:
+    get:
+      summary: authentication
+      description: authentication
+      tags:
+        - Auth
+      parameters:
+        - name: username
+          in: query
+          required: true
+          type: string
+          description: username
+        - name: password
+          in: query
+          required: true
+          type: string
+          description: password
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Auth Ok.
+        '404':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Resource Not Found.
+        '500':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Server Internal Error.
+
+  /users:
+    get:
+      summary: List or search users
+      description: List or search users
+      tags:
+        - Users
+      parameters:
+        - name: per_page
+          in: query
+          required: true
+          type: number
+          format: int
+          description: The amount of entries per page
+        - name: page
+          in: query
+          required: true
+          type: number
+          format: int
+          description: The page number. Zero based
+        - name: connection
+          in: query
+          required: false
+          type: string
+          description:  Connection filter
+        - name: application
+          in: query
+          required: false
+          type: string
+          description: applicaton filter
+        - name: username
+          in: query
+          required: false
+          type: string
+          description: username filter
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: The users were retrieved. See Response Class below for schema.
+        '401':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Invalid token.
+        '403':
+          description: Insufficient scope.
+        '404':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Resource Not Found.
+        '500':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Server Internal Error.
+
+  #/users:
+    put:
+      summary: Creates a new user
+      description: Create a new user
+      tags:
+        - Users
+      parameters:
+        - name: connection
+          in: query
+          required: false
+          type: string
+          description: which kind of connection
+        - name: username
+          in: query
+          required: true
+          type: string
+          description: username
+        - name: password
+          in: query
+          required: true
+          type: string
+          description: password
+        - name: email
+          in: query
+          required: true
+          type: string
+          description: email
+        - name: phone_number
+          in: query
+          required: false
+          type: string
+          description: phone number
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: The user was created. See Response Class below for schema.
+        '401':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Invalid token.
+        '403':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Insufficient scope.
+        '404':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Resource Not Found.
+        '500':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Server Internal Error.
+
+  #/users:
+    delete:
+      summary: Delete all users, use with caution
+      description: Delete all users
+      tags:
+        - Users
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: all users successfully deleted.
+        '401':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Invalid token.
+        '403':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Insufficient scope.
+        '404':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Resource Not Found.
+        '500':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Server Internal Error.
+
+  /users/{id}:
+    get:
+      summary: Get a user
+      description: Get a user
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: get user info according to the id
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: The user was retrieved. See Response Class below for schema.
+        '401':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Invalid token.
+        '403':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Insufficient scope.
+        '404':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Resource Not Found.
+        '500':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Server Internal Error. 
+
+    post:
+      summary: Update a user
+      description: Update a user
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: update according the id
+        - name: connection
+          in: query
+          required: true
+          type: string
+          description: which kind of connection
+        - name: username
+          in: query
+          required: true
+          type: string
+          description: username
+        - name: password
+          in: query
+          required: true
+          type: string
+          description: password
+        - name: email
+          in: query
+          required: true
+          type: string
+          description: email
+        - name: phone_number
+          in: query
+          required: false
+          type: string
+          description: phone number
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: The user was updated. See Response Class below for schema.
+        '401':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Invalid token.
+        '403':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Insufficient scope
+        '404':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Resource Not Found.
+        '500':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Server Internal Error.
+
+    delete:
+      summary: Delete a user
+      description: Delete a user
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: delete user according to id
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Successful deleted the user
+        '401':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Invalid token.
+        '403':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Invalid scope.
+        '404':
+          schema:
+            $ref: '#/definitions/Results' 
+          description: Resource Not Found.
+        '500':
+          schema:
+            $ref: '#/definitions/Results'
+          description: Server Intenal Error.
+        
+definitions:
+  Results:
+    type: object
+    properties:
+      code:
+        type: number
+        format: int
+        description: return code, should equal with http code
+      msg:
+        type: string
+        description: short message of the operation
+      total:
+        type: number
+        format: int
+        description: how many records returned this time
+      recs:
+        type: array
+        items:
+          $ref: '#/definitions/User'
+            
+  User:
+    type: object
+    properties:
+      email:
+        type: string
+        description: email of the user
+      email_verified:
+        type: boolean
+        description: weather the email is verified
+      username:
+        type: string
+        description: username
+      phone_number:
+        type: string
+        description: phone number
+      phone_verified:
+        type: boolean
+        description: weather phone is verified
+      user_id:
+        type: string
+        description: user id
+      created_at:
+        type: string
+        format: date
+        description: created time
+      updated_at:
+        type: string
+        format: date
+        description: updated time
+      identities:
+        type: array
+        items:
+          $ref: '#/definitions/Identity'
+            
+  Identity:
+    type: object
+    properties:
+      connection:
+        type: string
+        description: connection name
+      user_id:
+        type: string
+        description: user id
+      provider:
+        type: string
+        description: provider name
+      isSocial:
+        type: boolean
+        description: is social
+  
