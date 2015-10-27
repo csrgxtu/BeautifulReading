@@ -1,6 +1,6 @@
 import scrapy
 
-class DmozSpider(scrapy.Spider):
+class ShaishufangSpider(scrapy.Spider):
     name = "dmoz"
     allowed_domains = ["dmoz.org"]
     start_urls = [
