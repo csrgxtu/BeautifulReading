@@ -19,22 +19,27 @@ class Download(object):
   SOURCE = None
   TIME_OUT = 20
   HEAD = None
+  Cookie = None
 
   USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
   #REQ_HEAD = {"Referer": "http://www.google.com",
     # "User-Agent": USER_AGENT
   # }
 
-  def __init__(self, url):
+  def __init__(self, url, cookie):
     self.setURL(url)
+    self.Cookie = cookie
     #self.USER_AGENT = user_agent
 
   def doRequest(self):
     try:
       #req = urllib2.Request(self.getURL(), headers = self.REQ_HEAD)
-      req = urllib2.Request(self.getURL())
-      handler = urllib2.urlopen(url = req, timeout = self.getTIMEOUT())
+      # req = urllib2.Request(self.getURL())
+      #   handler = urllib2.urlopen(url = req, timeout = self.getTIMEOUT())
       #handler = urllib2.urlopen(self.getURL(), timeout = self.getTIMEOUT())
+      opener = urllib2.build_opener()
+      opener.addheaders.append(('Cookie', self.Cookie))
+      handler = opener.open(self.URL)
 
       self.setREDIRECTEDURL(handler.geturl())
       self.setHTTPCODE(handler.getcode())
