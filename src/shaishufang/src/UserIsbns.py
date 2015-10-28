@@ -33,4 +33,12 @@ class UserIsbns(object):
             self.BIDS.extend(u.getBids())
 
         # second, foreach bid in bids, get isbns
-        return self.BIDS
+        for bid in self.BIDS:
+            b = BookInfo(self.UID, bid, self.Cookie)
+            isbn = b.getIsbn()
+            if not isbn:
+                print "WARN: ", self.UID, bid, self.Cookie
+            else:
+                self.ISBNS.append(isbn)
+
+        return self.ISBNS
