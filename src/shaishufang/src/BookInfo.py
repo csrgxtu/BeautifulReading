@@ -34,7 +34,7 @@ class BookInfo(object):
             if len(self.Soup.find('div', {'id': 'attr'}).find_all('li')) == 0:
                 return False
             if "ISBN:" in self.Soup.find('div', {'id': 'attr'}).find_all('li')[-1].text:
-                return self.Soup.find('div', {'id': 'attr'}).find_all('li')[-1].text.replace('ISBN:', '')
+                return str(self.Soup.find('div', {'id': 'attr'}).find_all('li')[-1].text.replace('ISBN:', ''))
             else:
                 return False
         return False
