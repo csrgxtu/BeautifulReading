@@ -42,7 +42,7 @@ class UserBooks(object):
         bids = []
         if not self.Soup:
             return bids
-        
+
         if self.Soup.find('ul', {'id': 'booksList'}):
             if len(self.Soup.find('ul', {'id': 'booksList'}).find_all('li')) == 0:
                 return bids
