@@ -22,7 +22,7 @@ class UserBooks(object):
         self.Page = page
 
         if not self.request():
-            print "ERROR: ", uid, cookie, page
+            print "ERROR[UserBooks]: ", uid, cookie, page
         else:
             self.Soup = BeautifulSoup(self.HTML)
 

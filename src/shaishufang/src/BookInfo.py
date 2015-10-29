@@ -22,7 +22,7 @@ class BookInfo(object):
         self.Cookie = cookie
 
         if not self.request():
-            print "ERROR: ", uid, bid, cookie
+            print "ERROR[BookInfo]: ", uid, bid, cookie
         else:
             self.Soup = BeautifulSoup(self.HTML)
 
