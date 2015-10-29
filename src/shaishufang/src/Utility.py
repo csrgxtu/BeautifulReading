@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding = utf8
-# 
+#
 # Author: Archer Reilly
 # File: Utility.py
 # Date: 15/Oct/2014
@@ -37,7 +37,9 @@ def appendstr2file(string, outFile):
 # @return nothing
 def appendlst2file(lst, outFile):
   with open(outFile, "a") as myFile:
-    myFile.write(",".join(map(lambda x: str(x), lst)) + "\n")
+    # myFile.write(",".join(map(lambda x: str(x), lst)) + "\n")
+    for item in lst:
+        myFile.write(item + "\n")
     myFile.close()
 
 # readmatricefromfile

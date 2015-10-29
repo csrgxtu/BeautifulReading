@@ -7,15 +7,16 @@
 #
 # Produced By CSRGXTU
 from UserIsbns import UserIsbns
-from Utility import saveLstToFile
+from Utility import appendlst2file
 
 def run():
     uid = '90661'
     cookie = 'shaishufang=Mjc5MTYwfGZmY2VmYzIyYmMxZjhlZThjNzgzYjFlOGIxOWUwODg2'
 
-    ui = UserIsbns(uid, cookie)
-    isbns = ui.run()
-    saveLstToFile('isbns.txt', isbns)
+    for i in range(1, 279653):
+        ui = UserIsbns(str(i), cookie)
+        isbns = ui.run()
+        appendlst2file(isbns, 'isbns.txt')
 
 if __name__ == '__main__':
     run()
