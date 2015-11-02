@@ -24,7 +24,7 @@ class BookInfo(object):
         if not self.request():
             print "ERROR[BookInfo]: ", uid, bid, cookie
         else:
-            self.Soup = BeautifulSoup(self.HTML)
+            self.Soup = BeautifulSoup(self.HTML, "lxml")
 
     def getIsbn(self):
         if not self.Soup:

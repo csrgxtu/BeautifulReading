@@ -24,7 +24,7 @@ class UserBooks(object):
         if not self.request():
             print "ERROR[UserBooks]: ", uid, cookie, page
         else:
-            self.Soup = BeautifulSoup(self.HTML)
+            self.Soup = BeautifulSoup(self.HTML, "lxml")
 
     def getTotalPageNumbers(self):
         if not self.Soup:
