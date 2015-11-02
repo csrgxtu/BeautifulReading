@@ -9,15 +9,20 @@
 import multiprocessing
 
 from UserIsbns import UserIsbns
-from Utility import appendlst2file
+from Utility import appendMatrixToFile
 
 def worker(start, offset):
     cookie = 'shaishufang=Mjc5MTYwfGZmY2VmYzIyYmMxZjhlZThjNzgzYjFlOGIxOWUwODg2'
+    mat = []
 
     for i in range(start, start + offset):
         ui = UserIsbns(str(i), cookie)
         isbns = ui.run()
-        appendlst2file(isbns, 'isbns.txt')
+        for j in range(len(isbns)):
+            tmpLst = [str(i), isbns[j]]
+            mat.append(tmpLst)
+        # print mat
+        appendMatrixToFile('isbns.txt', mat)
 
 def run():
     jobs = []
@@ -31,3 +36,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+    # worker(258536, 1)

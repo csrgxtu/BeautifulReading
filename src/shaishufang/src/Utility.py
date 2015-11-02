@@ -77,6 +77,12 @@ def saveMatrixToFile(outputFile, matrix):
       myFile.write(','.join([str(x) for x in row]) + '\n')
     myFile.close()
 
+def appendMatrixToFile(outputFile, matrix):
+    with open(outputFile, 'a') as myFile:
+        for row in matrix:
+            myFile.write(','.join([str(x) for x in row]) + '\n')
+        myFile.close()
+
 # saveLstToFile
 # save an list to file
 #
