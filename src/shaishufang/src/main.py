@@ -9,20 +9,32 @@
 import multiprocessing
 
 from UserIsbns import UserIsbns
+from MySQLDB import MySQLDB
 from Utility import appendMatrixToFile
 
 def worker(start, offset):
     cookie = 'shaishufang=Mjc5MTYwfGZmY2VmYzIyYmMxZjhlZThjNzgzYjFlOGIxOWUwODg2'
-    mat = []
+    host = "localhost"
+    port = 3306
+    username = 'root'
+    password = 'root'
+    database = 'shaishufang'
+
+    m = MySQLDB(host, port, username, password, database)
 
     for i in range(start, start + offset):
         ui = UserIsbns(str(i), cookie)
         isbns = ui.run()
-        for j in range(len(isbns)):
-            tmpLst = [str(i), isbns[j]]
-            mat.append(tmpLst)
-        # print mat
-        appendMatrixToFile('isbns.txt', mat)
+        userModel = {'UserID': i, 'UserName': ui.getUserName(), 'TotalBooks': ui.getTotalBooks()}
+        if not m.InsertUsers(userModel):
+            print 'fuck it'
+
+        for isbn in isbns:
+            bookModel = {'ISBN': isbn, 'BookName': 'Unknow', 'UserID': i}
+            m.InsertBooks(bookModel)
+
+    m.CloseDB()
+
 
 def run():
     jobs = []
@@ -35,5 +47,5 @@ def run():
         index = index + 5593
 
 if __name__ == '__main__':
-    run()
-    # worker(258536, 1)
+    # run()
+    worker(112264, 1)

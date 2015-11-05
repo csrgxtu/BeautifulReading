@@ -1,11 +1,12 @@
 #!/usr/bin/env python
-#
+# coding=utf-8
 # Author: Archer Reilly
 # Date: 27/Aug/2015
 # File: UserBooks.py
 # Desc: class for UserBooks list page
 #
 # Produced By CSRGXTU
+import re
 from Download import Download
 from bs4 import BeautifulSoup
 
@@ -37,6 +38,25 @@ class UserBooks(object):
             return int(self.Soup.find('ul', {'id': 'booksPage'}).find_all('li')[-2].text)
 
         return 1
+
+    def getTotalBooks(self):
+        if not self.Soup:
+            return 0
+
+        if self.Soup.find('ul', {'id': 'categoryList'}):
+            if self.Soup.find('ul', {'id': 'categoryList'}).find('li'):
+                return int(re.sub(r'[^\x00-\x7F]+',' ',self.Soup.find('ul', {'id': 'categoryList'}).find('li').find('a').text).strip())
+
+        return 0
+
+    def getUserName(self):
+        if not self.Soup:
+            return False
+
+        if self.Soup.find('div', {'id': 'username'}):
+            return self.Soup.find('div', {'id': 'username'}).find('span').text.encode('utf-8')
+
+        return False
 
     def getBids(self):
         bids = []
