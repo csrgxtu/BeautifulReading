@@ -18,6 +18,7 @@ class UserBooks(object):
     Soup = None
 
     def __init__(self, uid, cookie, page):
+        self.reset()
         self.UID = uid
         self.Cookie = cookie
         self.Page = page
@@ -26,6 +27,13 @@ class UserBooks(object):
             print "ERROR[UserBooks]: ", uid, cookie, page
         else:
             self.Soup = BeautifulSoup(self.HTML, "lxml")
+
+    def reset(self):
+        self.HTML = None
+        self.Cookie = None
+        self.UID = None
+        self.Page = None
+        self.Soup = None
 
     def getTotalPageNumbers(self):
         if not self.Soup:
@@ -54,7 +62,7 @@ class UserBooks(object):
             return False
 
         if self.Soup.find('div', {'id': 'username'}):
-            return self.Soup.find('div', {'id': 'username'}).find('span').text.encode('utf-8')
+            return self.Soup.find('div', {'id': 'username'}).find('span').text
 
         return False
 

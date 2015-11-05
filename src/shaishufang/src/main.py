@@ -26,8 +26,7 @@ def worker(start, offset):
         ui = UserIsbns(str(i), cookie)
         isbns = ui.run()
         userModel = {'UserID': i, 'UserName': ui.getUserName(), 'TotalBooks': ui.getTotalBooks()}
-        if not m.InsertUsers(userModel):
-            print 'fuck it'
+        m.InsertUsers(userModel)
 
         for isbn in isbns:
             bookModel = {'ISBN': isbn, 'BookName': 'Unknow', 'UserID': i}
@@ -47,5 +46,5 @@ def run():
         index = index + 5593
 
 if __name__ == '__main__':
-    # run()
-    worker(112264, 1)
+    run()
+    # worker(274464, 1)

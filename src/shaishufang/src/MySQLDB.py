@@ -15,7 +15,7 @@ class MySQLDB(object):
     Cursor = None
 
     def __init__(self, host, port, username, password, database):
-        self.DB = MySQLdb.connect(host, username, password, database)
+        self.DB = MySQLdb.connect(host, username, password, database, charset='utf8')
         self.Cursor = self.DB.cursor()
 
     # userModel = {'UserID': 1, 'UserName': 'archer', 'TotalBooks': 34}
@@ -24,14 +24,11 @@ class MySQLDB(object):
                 VALUES('%d', '%s', '%d')" % \
                 (userModel['UserID'], userModel['UserName'], userModel['TotalBooks'])
 
-        print 'INFO[MySQLDB]: ', sql
         try:
-            print 'INFO[MySQLDB]: after commit'
             self.Cursor.execute(sql)
             self.DB.commit()
         except:
             self.DB.rollback()
-            print "Unexpected error:", sys.exc_info()[0]
             return False
 
         return True

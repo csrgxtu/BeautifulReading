@@ -19,8 +19,14 @@ class UserIsbns(object):
     UserName = None
 
     def __init__(self, uid, cookie):
+        self.UID = None
+        self.Cookie = None
+        self.BIDS = []
+        self.ISBNS = []
+
         self.UID = uid
         self.Cookie = cookie
+
 
     def run(self):
         # first, fillup the bids of the user

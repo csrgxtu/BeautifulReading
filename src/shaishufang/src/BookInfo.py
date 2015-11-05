@@ -17,6 +17,7 @@ class BookInfo(object):
     Soup = None
 
     def __init__(self, uid, bid, cookie):
+        self.reset()
         self.UID = uid
         self.BID = bid
         self.Cookie = cookie
@@ -25,6 +26,13 @@ class BookInfo(object):
             print "ERROR[BookInfo]: ", uid, bid, cookie
         else:
             self.Soup = BeautifulSoup(self.HTML, "lxml")
+
+    def reset(self):
+        self.HTML = None
+        self.UID = None
+        self.BID = None
+        self.Cookie = None
+        self.Soup = None
 
     def getIsbn(self):
         if not self.Soup:
