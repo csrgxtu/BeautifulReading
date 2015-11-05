@@ -11,10 +11,38 @@ import MySQLdb
 
 class MySQLDB(object):
     DB = None
+    Cursor = None
 
     def __init__(self, host, port, username, password, database):
         self.DB = MySQLdb.connect(host, username, password, database)
-        pass
+        self.Cursor = self.DB.cursor()
 
-    def InsertBooks(self):
-        pass
+    def InsertUsers(self, userModel):
+        sql = "INSERT INTO Users(UserID, UserName, TotalBooks)  \
+                VALUES('%d', '%s', '%d')" % \
+                (userModel['UserID'], userModel['UserName'], userModel['TotalBooks'])
+
+        try:
+            self.Cursor.execute(sql)
+            self.DB.commit()
+        except:
+            self.DB.rollback()
+            return False
+
+        return True
+
+    def InsertBooks(self, bookModel):
+        sql = "INSERT INTO Books(ISBN, BookName, UserID) \
+                VALUES('%s', '%s', '%d')" % \
+                (bookModel['ISBN'], bookModel['BookName'], bookModel['UserID'])
+
+        try:
+            self.Cursor.execute(sql)
+            self.DB.commit()
+        except:
+            self.DB.rollback()
+            return False
+        return True
+
+    def CloseDB(self):
+        self.DB.close()
