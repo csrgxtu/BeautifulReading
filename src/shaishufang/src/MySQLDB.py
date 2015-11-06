@@ -29,6 +29,7 @@ class MySQLDB(object):
             self.DB.commit()
         except:
             self.DB.rollback()
+            print "Unexpected error:", sys.exc_info()[0]
             return False
 
         return True

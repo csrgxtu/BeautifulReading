@@ -38,11 +38,11 @@ class UserIsbns(object):
 
         if self.TotalBooks == 0:
             # jump over this uid
-            print "WARN[UserIsbns]: ", self.UID, self.Cookie
+            # print "WARN[UserIsbns]: ", self.UID, self.Cookie
             return self.ISBNS
 
         for i in range(1, totalPages + 2):
-            print "INFO[UserIsbns]: ", self.UID, self.Cookie, i
+            # print "INFO[UserIsbns]: ", self.UID, self.Cookie, i
             u = UserBooks(self.UID, self.Cookie, i)
             self.BIDS.extend(u.getBids())
 
@@ -50,9 +50,8 @@ class UserIsbns(object):
         for bid in self.BIDS:
             b = BookInfo(self.UID, bid, self.Cookie)
             isbn = b.getIsbn()
-            if not isbn:
-                print "WARN[UserIsbns]: ", self.UID, bid, self.Cookie
-            else:
+            if isbn:
+                # print "WARN[UserIsbns]: ", self.UID, bid, self.Cookie
                 self.ISBNS.append(isbn)
 
         return self.ISBNS

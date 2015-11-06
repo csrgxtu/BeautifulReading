@@ -14,7 +14,7 @@ from Utility import appendMatrixToFile
 
 def worker(start, offset):
     cookie = 'shaishufang=Mjc5MTYwfGZmY2VmYzIyYmMxZjhlZThjNzgzYjFlOGIxOWUwODg2'
-    host = "localhost"
+    host = "127.0.0.1"
     port = 3306
     username = 'root'
     password = 'root'
@@ -26,11 +26,13 @@ def worker(start, offset):
         ui = UserIsbns(str(i), cookie)
         isbns = ui.run()
         userModel = {'UserID': i, 'UserName': ui.getUserName(), 'TotalBooks': ui.getTotalBooks()}
-        m.InsertUsers(userModel)
+        if m.InsertUsers(userModel):
+            print 'INFO[Inserted Users]: ', userModel
 
         for isbn in isbns:
             bookModel = {'ISBN': isbn, 'BookName': 'Unknow', 'UserID': i}
-            m.InsertBooks(bookModel)
+            if m.InsertBooks(bookModel):
+                print 'INFO[Inserted Books]: ', bookModel
 
     m.CloseDB()
 
@@ -46,5 +48,5 @@ def run():
         index = index + 5593
 
 if __name__ == '__main__':
-    run()
-    # worker(274464, 1)
+    # run()
+    worker(1, 279652)
