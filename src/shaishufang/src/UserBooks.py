@@ -26,7 +26,8 @@ class UserBooks(object):
         if not self.request():
             print "ERROR[UserBooks]: ", uid, cookie, page
         else:
-            self.Soup = BeautifulSoup(self.HTML, "lxml")
+            # self.Soup = BeautifulSoup(self.HTML, "lxml")
+            self.Soup = BeautifulSoup(self.HTML)
 
     def reset(self):
         self.HTML = None
