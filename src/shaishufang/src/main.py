@@ -23,6 +23,7 @@ def worker(start, offset):
     m = MySQLDB(host, port, username, password, database)
 
     for i in range(start, start + offset):
+        print 'INFO[UserID]: ', i, 'Processing...'
         ui = UserIsbns(str(i), cookie)
         isbns = ui.run()
         userModel = {'UserID': i, 'UserName': ui.getUserName(), 'TotalBooks': ui.getTotalBooks()}
@@ -48,5 +49,5 @@ def run():
         index = index + 5593
 
 if __name__ == '__main__':
-    # run()
-    worker(1, 279652)
+    run()
+    # worker(1, 279652)
