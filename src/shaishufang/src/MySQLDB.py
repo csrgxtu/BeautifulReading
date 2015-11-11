@@ -48,5 +48,31 @@ class MySQLDB(object):
             return False
         return True
 
+    def InsertProxies(self, proxies):
+        sql = "DELETE FROM Proxies WHERE ProxyID > 0"
+        try:
+            self.Cursor.execute(sql)
+        except:
+            self.DB.rollback()
+            return False
+
+        for i in range(1, len(proxies) + 1):
+            sql = "INSERT INTO Proxies(ProxyID, Proxy) \
+                VALUES('%d', '%s')" % \
+                (i, proxies[i - 1])
+            try:
+                self.Cursor.execute(sql)
+                self.DB.commit()
+            except:
+                self.DB.rollback()
+                return False
+        return True
+
+    def ReadProxy(self):
+        sql = "SELECT Proxy FROM Proxies ORDER BY RAND() LIMIT 0,1"
+        self.Cursor.execute(sql)
+        proxy = self.Cursor.fetchone()
+        return str(proxy[0])
+
     def CloseDB(self):
         self.DB.close()
