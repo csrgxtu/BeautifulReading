@@ -20,9 +20,9 @@ class MySQLDB(object):
 
     # userModel = {'UserID': 1, 'UserName': 'archer', 'TotalBooks': 34}
     def InsertUsers(self, userModel):
-        sql = "INSERT INTO Users(UserID, UserName, TotalBooks)  \
-                VALUES('%d', '%s', '%d')" % \
-                (userModel['UserID'], userModel['UserName'], userModel['TotalBooks'])
+        sql = "INSERT INTO Users(UserID, UserName, TotalBooks, State)  \
+                VALUES('%d', '%s', '%d', '%d')" % \
+                (userModel['UserID'], userModel['UserName'], userModel['TotalBooks'], userModel=['State'])
 
         try:
             self.Cursor.execute(sql)
@@ -36,9 +36,9 @@ class MySQLDB(object):
 
     # bookModel = {'ISBN': '34224323223', 'BookName': 'what the hell', 'UserID': 1}
     def InsertBooks(self, bookModel):
-        sql = "INSERT INTO Books(ISBN, BookName, UserID) \
-                VALUES('%s', '%s', '%d')" % \
-                (bookModel['ISBN'], bookModel['BookName'], bookModel['UserID'])
+        sql = "INSERT INTO Books(ISBN, BookName, UserID, State) \
+                VALUES('%s', '%s', '%d', '%d')" % \
+                (bookModel['ISBN'], bookModel['BookName'], bookModel['UserID'], bookModel['State'])
 
         try:
             self.Cursor.execute(sql)
