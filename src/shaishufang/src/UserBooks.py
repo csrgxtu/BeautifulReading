@@ -16,12 +16,14 @@ class UserBooks(object):
     UID = None
     Page = None
     Soup = None
+    Proxy = None
 
-    def __init__(self, uid, cookie, page):
+    def __init__(self, uid, cookie, page, proxy):
         self.reset()
         self.UID = uid
         self.Cookie = cookie
         self.Page = page
+        self.Proxy = proxy
 
         if not self.request():
             print "ERROR[UserBooks]: ", uid, cookie, page
@@ -35,6 +37,7 @@ class UserBooks(object):
         self.UID = None
         self.Page = None
         self.Soup = None
+        self.Proxy = None
 
     def getTotalPageNumbers(self):
         if not self.Soup:
@@ -85,7 +88,7 @@ class UserBooks(object):
         postFix = "/friend/false/category//status//type//page/"
         url = baseUrl + self.UID + postFix + str(self.Page)
 
-        d = Download(url, self.Cookie)
+        d = Download(url, self.Cookie, self.Proxy)
         if d.doRequest():
             return False
 

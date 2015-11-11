@@ -17,20 +17,23 @@ class UserIsbns(object):
 
     TotalBooks = None
     UserName = None
+    Proxy = None
 
-    def __init__(self, uid, cookie):
+    def __init__(self, uid, cookie, proxy):
         self.UID = None
         self.Cookie = None
         self.BIDS = []
         self.ISBNS = []
+        self.Proxy = None
 
         self.UID = uid
         self.Cookie = cookie
+        self.Proxy = proxy
 
 
     def run(self):
         # first, fillup the bids of the user
-        u = UserBooks(self.UID, self.Cookie, 1)
+        u = UserBooks(self.UID, self.Cookie, 1, self.Proxy)
         totalPages = u.getTotalPageNumbers()
 
         self.TotalBooks = u.getTotalBooks()
@@ -43,12 +46,12 @@ class UserIsbns(object):
 
         for i in range(1, totalPages + 2):
             # print "INFO[UserIsbns]: ", self.UID, self.Cookie, i
-            u = UserBooks(self.UID, self.Cookie, i)
+            u = UserBooks(self.UID, self.Cookie, i, self.Proxy)
             self.BIDS.extend(u.getBids())
 
         # second, foreach bid in bids, get isbns
         for bid in self.BIDS:
-            b = BookInfo(self.UID, bid, self.Cookie)
+            b = BookInfo(self.UID, bid, self.Cookie, self.Proxy)
             isbn = b.getIsbn()
             if isbn:
                 # print "WARN[UserIsbns]: ", self.UID, bid, self.Cookie

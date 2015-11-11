@@ -16,12 +16,14 @@ class BookInfo(object):
     BID = None
     Cookie = None
     Soup = None
+    Proxy = None
 
-    def __init__(self, uid, bid, cookie):
+    def __init__(self, uid, bid, cookie, proxy):
         self.reset()
         self.UID = uid
         self.BID = bid
         self.Cookie = cookie
+        self.Proxy = proxy
 
         if not self.request():
             print "ERROR[BookInfo]: ", uid, bid, cookie
@@ -37,6 +39,7 @@ class BookInfo(object):
         self.BID = None
         self.Cookie = None
         self.Soup = None
+        self.Proxy = None
 
     def getIsbn(self):
         if not self.Soup:
@@ -56,7 +59,7 @@ class BookInfo(object):
         postFix = '/status//category/none/friend/false'
         url = baseUrl + self.UID + '/ubid/' + self.BID + postFix
 
-        d = Download(url, self.Cookie)
+        d = Download(url, self.Cookie, self.Proxy)
         if d.doRequest():
             return False
 
