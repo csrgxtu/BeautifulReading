@@ -15,8 +15,8 @@ from ProxyDownload import ProxyDownload
 import json
 import time
 
-def updateProxy(start, offset):
-    url = 'http://svip.kuaidaili.com/api/getproxy/?orderid=983980639044193&num=5&browser=1&protocol=1&method=1&sp1=1&quality=0&sort=0&format=json&sep=1'
+def updateProxy():
+    url = 'http://svip.kuaidaili.com/api/getproxy/?orderid=983980639044193&num=20&browser=1&protocol=1&method=1&sp1=1&quality=0&sort=0&format=json&sep=1'
     host = "127.0.0.1"
     port = 3306
     username = 'root'
@@ -69,11 +69,13 @@ def run():
     jobs = []
 
     index = 1
-    for i in range(50):
+    for i in range(1):
         p = multiprocessing.Process(target=worker, args=(index, 5593))
         jobs.append(p)
         p.start()
         index = index + 5593
+    p = multiprocessing.Process(target=updateProxy)
+    p.start()
 
 if __name__ == '__main__':
     run()
