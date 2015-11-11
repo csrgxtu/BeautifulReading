@@ -26,7 +26,12 @@ def worker(start, offset):
         print 'INFO[UserID]: ', i, 'Processing...'
         ui = UserIsbns(str(i), cookie)
         isbns = ui.run()
-        userModel = {'UserID': i, 'UserName': ui.getUserName(), 'TotalBooks': ui.getTotalBooks()}
+        if len(isbns) == ui.getTotalBooks():
+            state = 1
+        else:
+            state = 0
+
+        userModel = {'UserID': i, 'UserName': ui.getUserName(), 'TotalBooks': ui.getTotalBooks(), 'State': state}
         if m.InsertUsers(userModel):
             print 'INFO[Inserted Users]: ', userModel
 
