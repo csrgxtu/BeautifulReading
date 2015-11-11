@@ -22,7 +22,7 @@ class MySQLDB(object):
     def InsertUsers(self, userModel):
         sql = "INSERT INTO Users(UserID, UserName, TotalBooks, State)  \
                 VALUES('%d', '%s', '%d', '%d')" % \
-                (userModel['UserID'], userModel['UserName'], userModel['TotalBooks'], userModel['State'])
+                (int(userModel['UserID']), userModel['UserName'], int(userModel['TotalBooks']), int(userModel['State']))
 
         try:
             self.Cursor.execute(sql)

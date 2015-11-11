@@ -8,6 +8,7 @@
 # Produced By CSRGXTU
 from Download import Download
 from bs4 import BeautifulSoup
+from Utility import str2file
 
 class BookInfo(object):
     HTML = None
@@ -27,6 +28,8 @@ class BookInfo(object):
         else:
             # self.Soup = BeautifulSoup(self.HTML, "lxml")
             self.Soup = BeautifulSoup(self.HTML)
+            filename = '../data/HTML/' + self.UID + '-' + self.BID + '.html'
+            str2file(self.HTML, filename)
 
     def reset(self):
         self.HTML = None
