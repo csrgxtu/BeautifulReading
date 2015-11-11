@@ -20,15 +20,17 @@ class Download(object):
   TIME_OUT = 20
   HEAD = None
   Cookie = None
+  Proxy = None
 
   USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
   #REQ_HEAD = {"Referer": "http://www.google.com",
     # "User-Agent": USER_AGENT
   # }
 
-  def __init__(self, url, cookie):
+  def __init__(self, url, cookie, proxy):
     self.setURL(url)
     self.Cookie = cookie
+    self.Proxy = proxy
     #self.USER_AGENT = user_agent
 
   def doRequest(self):
@@ -37,7 +39,8 @@ class Download(object):
       # req = urllib2.Request(self.getURL())
       #   handler = urllib2.urlopen(url = req, timeout = self.getTIMEOUT())
       #handler = urllib2.urlopen(self.getURL(), timeout = self.getTIMEOUT())
-      opener = urllib2.build_opener()
+      proxy = urllib2.ProxyHandler({'http': self.Proxy})
+      opener = urllib2.build_opener(proxy)
       opener.addheaders.append(('Cookie', self.Cookie))
       handler = opener.open(self.URL)
 
