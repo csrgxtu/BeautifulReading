@@ -19,7 +19,7 @@ Headers = {
 # putUnvisitedUrls will put data dict to master
 # data: {'urls': [{'url': 'http://w.g.com', 'spider': 'Shaishufan'}]}
 def putUnvisitedUrls(data):
-    url = 'http://192.168.100.3:5000/unvisitedurls'
+    url = 'http://192.168.100.3:5001/unvisitedurls'
     unirest.timeout(180) # time out 180 same with scrapy download middlewares
     res = unirest.put(url, headers=Headers, params=json.dumps(data))
 
@@ -30,7 +30,7 @@ def putUnvisitedUrls(data):
 
 BaseUrl = 'http://book.douban.com/isbn/'
 
-with open('../data/kaijuan.csv', 'r') as FH:
+with open('../data/stdkaijuan.csv', 'r') as FH:
     FH.readline() # remove first line, the header
     counter = 0
     URLS = []
