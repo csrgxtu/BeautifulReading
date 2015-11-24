@@ -36,15 +36,15 @@ with open('../data/kaijuan.csv', 'r') as FH:
     URLS = []
 
     for line in FH:
-        if counter == 10 or line == '':
+        if counter == 1000 or line == '':
             data = {'urls': []}
             for url in URLS:
                 data['urls'].append({'url': url, 'spider': '6w'})
 
             if putUnvisitedUrls(data):
-                print 'Inserted: ', data
+                print 'Inserted: ', len(data['urls'])
             else:
-                print 'Fail: ', data
+                print 'Fail: ', len(data['urls'])
 
             counter = 0
             URLS = []
