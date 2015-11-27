@@ -19,14 +19,14 @@ Headers = {
 # putUnvisitedUrls will put data dict to master
 # data: {'urls': [{'url': 'http://w.g.com', 'spider': 'Shaishufan'}]}
 def putUnvisitedUrls(data):
-    url = 'http://192.168.100.3:5001/unvisitedurls'
+    url = 'http://127.0.0.1:5000/unvisitedurls'
     unirest.timeout(180) # time out 180 same with scrapy download middlewares
     res = unirest.put(url, headers=Headers, params=json.dumps(data))
 
     if res.body['code'] != 200:
         return False
 
-    return True
+    return len(res.body['data'])
 
 BaseUrl = 'http://book.douban.com/isbn/'
 
@@ -36,18 +36,20 @@ with open('../data/stdkaijuan.csv', 'r') as FH:
     URLS = []
 
     for line in FH:
-        if counter == 1000 or line == '':
+        if counter == 10 or line == '':
             data = {'urls': []}
             for url in URLS:
                 data['urls'].append({'url': url, 'spider': '6w'})
 
-            if putUnvisitedUrls(data):
-                print 'Inserted: ', len(data['urls'])
-            else:
-                print 'Fail: ', len(data['urls'])
+            # data = {'urls': [{'url': 'http://book.douban.com/subject/1078056/', 'spider': '6w'}]}
+            ret = putUnvisitedUrls(data)
+            # ret = 0
+            # print data
+            print 'InserteUnvisitedUrls, Trying ', len(data['urls']), ', Actually: ', ret
 
             counter = 0
             URLS = []
+            # break
 
         URLS.append(BaseUrl + line.strip('\n').split(',')[0])
         counter = counter + 1
