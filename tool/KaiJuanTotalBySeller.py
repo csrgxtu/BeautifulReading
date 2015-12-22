@@ -19,14 +19,25 @@ Headers = {
 # spider
 # return dict
 def getDatas(spider, start, offset):
-    url = 'http://192.168.100.3:5000/data?start=' + start + '&offset=' + offset + '&spider=' + spider
+    rtv = {}
+    url = 'http://192.168.100.3:5000/data?start=' + str(start) + '&offset=' + str(offset) + '&spider=' + spider
     unirest.timeout(180)
     res = unirest.get(url, headers=Headers)
 
     if res.body['code'] != 200:
         return False
 
-    return res.body['data']
+    rtv['spider'] = spider
+    rtv['start'] = start
+    rtv['offset'] = offset
+    rtv['datas'] = []
+    for item in res.body['data']:
+        tmpRtv = {}
+        tmpRtv['ISBN'] = item['data']['ISBN']
+        # 书籍购买来源
+        tmpRtv['data'] = item['data'][u'\u4e66\u7c4d\u8d2d\u4e70\u6765\u6e90']
+        rtv['datas'].append(tmpRtv)
+    return rtv
 
 # Get Data from Sauron's Data
 
@@ -36,4 +47,19 @@ def getDatas(spider, start, offset):
 # and put it into matrix, and put it into file
 
 if __name__ == '__main__':
-    getDatas('6w', 0, 1)
+    res = getDatas('6w', 0, 2)
+    # for key in res:
+    #     if key == 'ISBN':
+    #         print key
+    #     elif key == u'\u4e66\u7c4d\u8d2d\u4e70\u6765\u6e90':
+    #         print key
+
+    print res
+    # print res.keys()
+    # for key in res.keys():
+    #     if key ==
+    # print res
+    # print res.has_key('ISBN')
+    # print u'书籍购买来源'.encode('unicode-escape')
+    # print res.has_key(u'书籍购买来源'.encode('unicode-escape'))
+    # print res.has_key(unicode('书籍购买来源'))
