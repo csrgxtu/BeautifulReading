@@ -8,12 +8,14 @@
 # Produced By BR
 import unirest
 import json
+import urlparse
 
 Headers = {
     # 'Content-Type': 'application/json',
     'Accept': 'application/json'
 }
 
+# Get Data from Sauron's Data
 # get data from Sauron's datas according to the spider name
 #
 # spider
@@ -39,22 +41,48 @@ def getDatas(spider, start, offset):
         rtv['datas'].append(tmpRtv)
     return rtv
 
-# Get Data from Sauron's Data
 
 # Foreach record, process it and put into matrix
+def processRecord(rtvDict):
+    mat = []
+    # jingdong dangdang wenxuan joyo bookschina beifa bookuu taoshu chinapub
+    vendors = ['jingdong', 'dangdang', 'wenxuan', 'joyo', 'bookschina', 'beifa', 'bookuu', 'taoshu', 'chinapub']
+    for data in rtvDict['datas']:
+        tmpLst = []
+        tmpLst.append(data['ISBN'])
+        tmpDict = {}
+        for link in data['data']:
+            parsed = urlparse.urlparse(str(link))
+            if urlparse.parse_qs(parsed.query).has_key('vendor'):
+                tmpDict[urlparse.parse_qs(parsed.query)['vendor'][0]] = urlparse.parse_qs(parsed.query)['price'][0]
+                # print data['ISBN'], urlparse.parse_qs(parsed.query)['vendor'][0], urlparse.parse_qs(parsed.query)['price'][0]
+            # print urlparse.parse_qs(parsed.query).has_key('vendor')
+            # print urlparse.parse_qs(parsed.query)['vendor']
+        # print tmpDict
+        for vendor in vendors:
+            if tmpDict.has_key(vendor):
+                tmpLst.append(tmpDict[vendor])
+            else:
+                tmpLst.append('NN')
+
+        # print tmpLst
+        mat.append(tmpLst)
+    # pass
+    print mat
 
 # When matrix is ready, count total for each seller,
 # and put it into matrix, and put it into file
 
 if __name__ == '__main__':
-    res = getDatas('6w', 0, 2)
+    res = getDatas('6w', 0, 5)
+    processRecord(res)
     # for key in res:
     #     if key == 'ISBN':
     #         print key
     #     elif key == u'\u4e66\u7c4d\u8d2d\u4e70\u6765\u6e90':
     #         print key
 
-    print res
+    # print res
     # print res.keys()
     # for key in res.keys():
     #     if key ==
