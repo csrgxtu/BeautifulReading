@@ -9,7 +9,7 @@
 import unirest
 import json
 import urlparse
-import Utility import saveMatrixToFile
+from Utility import saveMatrixToFile
 
 Headers = {
     # 'Content-Type': 'application/json',
