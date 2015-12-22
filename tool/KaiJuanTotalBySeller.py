@@ -85,6 +85,7 @@ if __name__ == '__main__':
     Mat = []
 
     for page in range(1, 2365):
+        print 'Page: ', page
         res = getDatas('6w', page, 25)
         mat = processRecord(res)
         for row in mat:
