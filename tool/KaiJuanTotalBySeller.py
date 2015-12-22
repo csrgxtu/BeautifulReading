@@ -36,7 +36,10 @@ def getDatas(spider, start, offset):
     rtv['datas'] = []
     for item in res.body['data']:
         tmpRtv = {}
-        tmpRtv['ISBN'] = item['data']['ISBN']
+        if item['data'].has_key('ISBN'):
+            tmpRtv['ISBN'] = item['data']['ISBN']
+        else:
+            continue
         # 书籍购买来源
         tmpRtv['data'] = item['data'][u'\u4e66\u7c4d\u8d2d\u4e70\u6765\u6e90']
         rtv['datas'].append(tmpRtv)
