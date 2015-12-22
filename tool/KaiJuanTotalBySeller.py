@@ -9,7 +9,7 @@
 import unirest
 import json
 import urlparse
-import numpy as np
+import Utility import saveMatrixToFile
 
 Headers = {
     # 'Content-Type': 'application/json',
@@ -77,12 +77,16 @@ def processRecord(rtvDict):
 # When matrix is ready, count total for each seller,
 # and put it into matrix, and put it into file
 def Total(mat):
+    Sums = ['Total']
     vendors = ['jingdong', 'dangdang', 'wenxuan', 'joyo', 'bookschina', 'beifa', 'bookuu', 'taoshu', 'chinapub']
     for index in range(1, len(vendors)):
         sum = 0
         for row in mat:
             sum = sum + float(row[index])
-        print sum
+        # print sum
+        Sums.append(sum)
+
+    return Sums
 
 if __name__ == '__main__':
     Mat = []
@@ -94,7 +98,8 @@ if __name__ == '__main__':
         for row in mat:
             Mat.append(row)
 
-    Total(Mat)
+    Mat.append(Total(Mat))
+    saveMatrixToFile('./6wstatistics.csv', Mat)
     # res = getDatas('6w', 0, 5)
     # mat = processRecord(res)
     # print mat
