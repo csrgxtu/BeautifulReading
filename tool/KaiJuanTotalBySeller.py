@@ -9,6 +9,7 @@
 import unirest
 import json
 import urlparse
+import numpy as np
 
 Headers = {
     # 'Content-Type': 'application/json',
@@ -61,21 +62,39 @@ def processRecord(rtvDict):
         # print tmpDict
         for vendor in vendors:
             if tmpDict.has_key(vendor):
-                tmpLst.append(tmpDict[vendor])
+                tmpLst.append(float(tmpDict[vendor])/100)
             else:
-                tmpLst.append('NN')
+                tmpLst.append('0.0')
 
         # print tmpLst
         mat.append(tmpLst)
     # pass
-    print mat
+    return mat
 
 # When matrix is ready, count total for each seller,
 # and put it into matrix, and put it into file
+def Total(mat):
+    vendors = ['jingdong', 'dangdang', 'wenxuan', 'joyo', 'bookschina', 'beifa', 'bookuu', 'taoshu', 'chinapub']
+    for index in range(1, len(vendors)):
+        sum = 0
+        for row in mat:
+            sum = sum + float(row[index])
+        print sum
 
 if __name__ == '__main__':
-    res = getDatas('6w', 0, 5)
-    processRecord(res)
+    Mat = []
+
+    for page in range(1, 2365):
+        res = getDatas('6w', page, 25)
+        mat = processRecord(res)
+        for row in mat:
+            Mat.append(row)
+
+    Total(Mat)
+    # res = getDatas('6w', 0, 5)
+    # mat = processRecord(res)
+    # print mat
+    # Total(mat)
     # for key in res:
     #     if key == 'ISBN':
     #         print key
