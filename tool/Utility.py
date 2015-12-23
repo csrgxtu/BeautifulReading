@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding = utf8
-# 
+#
 # Author: Archer Reilly
 # File: Utility.py
 # Date: 15/Oct/2014
@@ -18,6 +18,18 @@ from numpy import loadtxt
 def str2file(string, outFile):
   with open(outFile, "w") as myFile:
     myFile.write(string)
+
+# loadFile
+# load file string from file
+#
+# @param inputFile
+# @return string
+def loadFile(inputFile):
+    fileStr = ''
+    with open(inputFile, 'r') as FH:
+        fileStr = FH.read()
+
+    return fileStr
 
 # appendstr2file
 # append string to file
