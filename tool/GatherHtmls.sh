@@ -16,9 +16,7 @@ Source=$1
 Destination=$2
 
 # recursively loop though the Source directory
-for dir in $Source"/*";
-do
-  # echo $dir
-  printf $dir
+for path in $Source/*; do
+  printf $path
   printf "\n"
 done
