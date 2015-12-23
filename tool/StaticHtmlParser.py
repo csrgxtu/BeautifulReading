@@ -20,4 +20,13 @@ class StaticHtmlParser(object):
         # pass
 
     def getBookInfos(self):
-        pass
+        mat = []
+        for item in self.Soup.find('table').find('tbody').find_all('tr'):
+            book = []
+            for data in item.find_all('td'):
+                book.append(data.getText())
+
+            mat.append(book)
+
+        return mat
+        # pass
