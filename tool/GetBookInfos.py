@@ -6,4 +6,12 @@
 # Date: 23/Dec/2015
 #
 # Produced By BR
-from Utility import loadFile
+from Utility import appendMatrixToFileUtf
+from StaticHtmlParser import StaticHtmlParser
+
+for i in range(1, 485):
+    print "Processing: ", i
+    s = StaticHtmlParser('/home/archer/Downloads/htmls/' + str(i) + '.html')
+    mat = s.getBookInfos()
+
+    appendMatrixToFileUtf('./data.csv', mat)

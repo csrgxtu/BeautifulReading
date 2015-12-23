@@ -8,6 +8,7 @@
 #
 # Produced By CSRGXTU
 from numpy import loadtxt
+import codecs
 
 # str2file
 # save string to file
@@ -86,6 +87,39 @@ def saveMatrixToFile(outputFile, matrix):
     for row in matrix:
       myFile.write(','.join([str(x) for x in row]) + '\n')
     myFile.close()
+
+# saveMatrixToFileUtf
+# save an utf8 matrix to file
+#
+# @param outputFile
+# @param matrix
+# @return noe
+def saveMatrixToFileUtf(outputFile, matrix):
+    with codecs.open(outputFile, 'w', 'utf-8') as FH:
+        for row in matrix:
+            for col in row:
+                FH.write(col)
+                FH.write(',')
+            FH.write('\n')
+
+        FH.close()
+
+# appendMatrixToFileUtf
+# append an utf8 matrix to file
+#
+# @param outputFile
+# @param matrix
+# @return noe
+def appendMatrixToFileUtf(outputFile, matrix):
+    with codecs.open(outputFile, 'a', 'utf-8') as FH:
+        for row in matrix:
+            for col in row:
+                FH.write(col)
+                FH.write(',')
+            FH.write('\n')
+
+        FH.close()
+
 
 # saveLstToFile
 # save an list to file
