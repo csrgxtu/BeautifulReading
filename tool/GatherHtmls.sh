@@ -5,6 +5,20 @@
 # Desc: move all subdirectories's html file into a signle directory
 #
 # Produced By BR
-if [ $# -ne 3 ]; then
+
+# check command line parameters first
+if [ $# -ne 2 ]; then
   echo "Usage: GatherHtmls Source Destination"
+  exit 1
 fi
+
+Source=$1
+Destination=$2
+
+# recursively loop though the Source directory
+for dir in $Source"/*";
+do
+  # echo $dir
+  printf $dir
+  printf "\n"
+done
