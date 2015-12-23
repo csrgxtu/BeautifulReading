@@ -14,9 +14,15 @@ fi
 
 Source=$1
 Destination=$2
+Counter=1
 
 # recursively loop though the Source directory
 for path in $Source/*; do
-  printf $path
-  printf "\n"
+  # printf $path"\n"
+  for file in $path/*; do
+    # printf $file$Counter"\n"
+    printf "Move "$file" 2 "$Destination"\n"
+    cp $file $Destination/$Counter".html"
+    Counter=$((Counter+1))
+  done
 done
