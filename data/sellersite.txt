@@ -1,0 +1,9 @@
+jingdong   京东         http://book.jd.com/
+dangdang   当当         http://book.dangdang.com/
+wenxuan    文轩         http://www.winxuan.com/
+joyo       亚马逊       http://www.amazon.cn/图书/b/?node=658390051
+bookschina 中国图书网    http://www.bookschina.com/
+beifa      北发         http://www.beifabook.com/
+bookuu     博库         http://www.bookuu.com/
+taoshu     淘书         http://www.taoshu.com/
+chinapub   China-Pub   http://www.china-pub.com/
