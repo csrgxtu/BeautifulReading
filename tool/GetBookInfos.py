@@ -14,4 +14,5 @@ for i in range(1, 485):
     s = StaticHtmlParser('/home/archer/Downloads/htmls/' + str(i) + '.html')
     mat = s.getBookInfos()
 
+    #print mat
     appendMatrixToFileUtf('./data.csv', mat)

@@ -21,12 +21,14 @@ class StaticHtmlParser(object):
 
     def getBookInfos(self):
         mat = []
-        for item in self.Soup.find('table').find('tbody').find_all('tr'):
+        for item in self.Soup.find_all('table')[-1].find('tbody').find_all('tr'):
             book = []
             for data in item.find_all('td'):
                 book.append(data.getText())
-
-            mat.append(book)
+            
+            #print book[1], book[-2]
+            #print book
+            mat.append([book[1], book[-2]])
 
         return mat
         # pass
