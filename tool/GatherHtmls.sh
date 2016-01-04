@@ -20,6 +20,7 @@ Counter=1
 for path in $Source/*; do
   # printf $path"\n"
   for file in $path/*; do
+    # printf $file"\n"
     # printf $file$Counter"\n"
     printf "Move "$file" 2 "$Destination"\n"
     cp $file $Destination/$Counter".html"

@@ -114,7 +114,8 @@ def appendMatrixToFileUtf(outputFile, matrix):
     with codecs.open(outputFile, 'a', 'utf-8') as FH:
         for row in matrix:
             for col in row:
-                FH.write(col.decode('utf-8'))
+                # FH.write(col.decode('utf-8'))
+                FH.write(col.replace('\r', '').replace('\n', ''))
                 FH.write(',')
             FH.write('\n')
 

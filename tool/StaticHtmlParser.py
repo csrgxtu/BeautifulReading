@@ -25,10 +25,11 @@ class StaticHtmlParser(object):
             book = []
             for data in item.find_all('td'):
                 book.append(data.getText())
-            
+
             #print book[1], book[-2]
             #print book
-            mat.append([book[1], book[-2]])
+            # mat.append([book[1], book[-2]])
+            mat.append(book)
 
         return mat
         # pass
