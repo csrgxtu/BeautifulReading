@@ -26,3 +26,4 @@
 [Cookies vs Tokens. Getting auth right with Angular.JS](https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/)  
 [https://auth0.com/blog/2014/01/27/ten-things-you-should-know-about-tokens-and-cookies/#token-size](https://auth0.com/blog/2014/01/07/angularjs-authentication-with-cookies-vs-token/)  [Auth with JSON Web Tokens10♥](http://jpadilla.com/post/73791304724/auth-with-json-web-tokens)  
 [AVOS Cloud 是什么](http://www.jianshu.com/p/9ca5d4ec3bb5)  
+[云中的高可用保障，且看Auth0的跨提供商多云架构](http://www.csdn.net/article/2014-12-24/2823285)  
