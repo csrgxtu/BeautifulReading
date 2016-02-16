@@ -1,0 +1,1 @@
+/home/archer/Documents/BeautifulReading/src/DisplayImage/CMakeFiles/DisplayImage.dir
