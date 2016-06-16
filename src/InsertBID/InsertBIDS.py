@@ -13,12 +13,12 @@ from bson.objectid import ObjectId
 BIDS = loadSeasons('./BIDS.txt')
 
 # connect to mongodb
-# client = MongoClient('mongodb://linyy:rioreader@192.168.200.20:27017/bookshelf')
-client = MongoClient('mongodb://192.168.100.2:27017/bookshelf')
+client = MongoClient('mongodb://rio:VFZPhT7y@192.168.200.22:27017/bookshelf')
+#client = MongoClient('mongodb://192.168.100.2:27017/bookshelf')
 db = client['bookshelf']
 collection = db['article']
 
-ID = '56f3c24aec49b1d75540220d'
+ID = '5761557e05cf2806003e1367'
 
 for bid in BIDS:
     # coll.update({'ref': ref}, {'$push': {'tags': new_tag}})
