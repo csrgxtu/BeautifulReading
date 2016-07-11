@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "serverURL": "http://192.168.100.2:9600/parse",
+      "appId": "appid",
+      "clientKey": "clientKey",
+      "masterKey": "masterKey",
+      "appName": "br"
+    }
+  ]
+}
