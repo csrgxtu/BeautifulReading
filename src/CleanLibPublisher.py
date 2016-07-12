@@ -35,7 +35,7 @@ client = MongoClient('mongodb://127.0.0.1:27017/')
 db = client['bookshelf']
 libc = db['library']
 
-REGEX = re.compile('[;|，|,| |\/]')
+REGEX = re.compile('[\+|;|，|,| |\/]')
 libs = libc.find({'publisher': {'$regex': REGEX}})
 print libs.count()
 
@@ -57,6 +57,8 @@ for lib in libs:
     lib['publisher'] = lib['publisher'].replace(' ', '#')
     lib['publisher'] = lib['publisher'].replace('|', '#')
     lib['publisher'] = lib['publisher'].replace(';', '#')
+    if not '勤+缘'.decode('utf-8') in lib['publisher']:
+        lib['publisher'] = lib['publisher'].replace('+', '#')
     # lib['publisher'] = lib['publisher'].replace('\uff0c', '#')
     # print lib['_id'], lib['publisher']
 
