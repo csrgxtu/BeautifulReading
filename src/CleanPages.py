@@ -10,7 +10,8 @@ from pymongo import MongoClient
 
 client = MongoClient('mongodb://127.0.0.1:27017/')
 db = client['bookshelf']
-bc = db['bookful']
+# bc = db['bookful']
+bc = db['bookdetail']
 
 # 对于pages不存在的，设置为0
 books = bc.find({'pages': {'$exists': 0}})
