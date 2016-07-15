@@ -20,31 +20,31 @@ for userid in userids:
     # print user['user_name'], user['mobile_number'], user['keep_books']
 
     # byBarcode
-    byBarcode = libc.find({"user_id": userid, "sources": "byBarcode"}).count()
+    byBarcode = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "byBarcode"}).count()
 
     # bySSF
-    bySSF = libc.find({"user_id": userid, "sources": "bySSF"}).count()
+    bySSF = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "bySSF"}).count()
 
     # bySpine
-    bySpine = libc.find({"user_id": userid, "sources": "bySpine"}).count()
+    bySpine = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "bySpine"}).count()
 
     # byDouban
-    byDouban = libc.find({"user_id": userid, "sources": "byDouban"}).count()
+    byDouban = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "byDouban"}).count()
 
     # byManual
-    byManual = libc.find({"user_id": userid, "sources": "byManual"}).count()
+    byManual = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "byManual"}).count()
 
     # ByBarcode
-    ByBarcode = libc.find({"user_id": userid, "sources": "ByBarcode"}).count()
+    ByBarcode = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "ByBarcode"}).count()
 
     # byShow
-    byShow = libc.find({"user_id": userid, "sources": "byShow"}).count()
+    byShow = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "byShow"}).count()
 
     # byMerge
-    byMerge = libc.find({"user_id": userid, "sources": "byMerge"}).count()
+    byMerge = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "byMerge"}).count()
 
     # unknown
-    unknown = libc.find({"user_id": userid, "sources": "unknown"}).count()
+    unknown = libc.find({'createtime': {'$lt': '1456761600000'}, "user_id": userid, "sources": "unknown"}).count()
 
     if user['keep_books'] == 0:
         user['keep_books'] = 1.0
