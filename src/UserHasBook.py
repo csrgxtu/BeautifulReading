@@ -21,11 +21,15 @@ orientSession = orientClient.connect( "root", "archer" )
 orientClient.db_open('bookshelf', "root", "archer" )
 
 # 从每条library记录中解析用户书籍关系
-libs = libc.find({'user_id': {'$exists': 1}, {'bid': {'$exists': 1}}})
+libs = libc.find({'user_id': {'$exists': 1}, {'bid': {'$exists': 1}}}, no_cursor_timeout = True)
 for lib in libs:
-    print 'User:', lib['user_id'], 'Book:', lib['bid']
-    cmd = 'create edge UserHasBook from (select from User where user_id="' + lib['user_id'] + '") to (select from Book where bid="' + lib['bid'] + '")'
-    orientClient.command(command)
+    try:
+        cmd = 'create edge UserHasBook from (select from User where user_id="' + lib['user_id'] + '") to (select from Book where bid="' + lib['bid'] + '")'
+        orientClient.command(cmd)
+        print 'User:', lib['user_id'], 'Book:', lib['bid']
+    except:
+        print 'User:', lib['user_id'], 'Book:', lib['bid'], 'vertex not exist'
 
 # 释放orient资源
+libs.close()
 orientClient.db_close()

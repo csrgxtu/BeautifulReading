@@ -21,7 +21,7 @@ orientSession = orientClient.connect( "root", "archer" )
 orientClient.db_open('bookshelf', "root", "archer" )
 
 # 从每条follow记录中解析用户书籍关系
-follows = fc.find({'follow_id': {'$exists': 1}, 'followed_id': {'$exists': 1}})
+follows = fc.find({'follow_id': {'$exists': 1}, 'followed_id': {'$exists': 1}}, no_cursor_timeout = True)
 for follow in follows:
     # check if friends，互相关注才是朋友
     aid = follow['follow_id']
@@ -39,4 +39,5 @@ for follow in follows:
 
 
 # 释放orient资源
+follows.close()
 orientClient.db_close()
