@@ -25,7 +25,7 @@ orientClient.db_open('bookshelf', "root", "archer")
 libs = libc.find({'user_id': {'$exists': 1}, 'bid': {'$exists': 1}}, no_cursor_timeout = True)
 for lib in libs:
     try:
-        cmd = 'create edge UserHasBook from (select from User where user_id="' + lib['user_id'] + '") to (select from Book where bid="' + lib['bid'] + '")'
+        cmd = 'create edge UserHasBook from (select from User where user_id="' + lib['user_id'] + '" limit 1) to (select from Book where bid="' + lib['bid'] + '" limit 1)'
         orientClient.command(cmd)
         print 'User:', lib['user_id'], 'Book:', lib['bid']
     except:
