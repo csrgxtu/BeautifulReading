@@ -27,11 +27,13 @@ for follow in follows:
     aid = follow['follow_id']
     bid = follow['followed_id']
     result = fc.find_one({'follow_id': bid, 'followed_id': aid})
-    if len(result) == 1:
-        print aid, bid, 'friends'
-        cmd = 'create edge UserFriendUser from (select from User where user_id="' + aid + '") to (select from User where user_id="' + bid + '")'
-        orientClient.command(command)
-
+    if type(result) == dict:
+        try:
+            cmd = 'create edge UserFriendUser from (select from User where user_id="' + aid + '") to (select from User where user_id="' + bid + '")'
+            orientClient.command(cmd)
+            print aid, bid, 'friends'
+        except:
+            print aid, bid, 'vertex not exist'
     else:
         print aid, bid, 'not friends'
 
