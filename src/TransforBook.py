@@ -23,9 +23,15 @@ orientClient.db_open('bookshelf', "root", "archer" )
 
 books = bc.find({'bid': {'$exists': 1}, 'title': {'$exists': 1}})
 for book in books:
-    print book['bid'], book['title']
-    command = 'create vertex Book set bid="' + book['bid'] + '", title=\'' + book['title'].replace('\'', '').replace('\n', '').replace('\\', '') + '\''
-    orientClient.command(command)
+    cmd = 'select from Book where bid="' + book['bid'] + '"'
+    result = orientClient.query(cmd)
+    if len(result) == 1:
+        print 'pass'
+        continue
+    else:
+        print book['bid'], book['title']
+        command = 'create vertex Book set bid="' + book['bid'] + '", title=\'' + book['title'].replace('\'', '').replace('\n', '').replace('\\', '') + '\''
+        orientClient.command(command)
 
 
 # 释放orient资源
