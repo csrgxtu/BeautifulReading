@@ -27,9 +27,10 @@ def hello(user_id):
         results = orientClient.query(cmd)
         for rtv in results:
             User.append(str(rtv.user_id))
-    # print dict(Counter(User).most_common())
-    return jsonify(Counter(User).most_common())
+    print dict(Counter(User).most_common())
+    # return jsonify(Counter(User).most_common())
+    return dict(Counter(User).most_common())
     # return user_id
 
 if __name__ == "__main__":
-    app.run(port=9100)
+    app.run(host="0.0.0.0", port=9100)
