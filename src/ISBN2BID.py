@@ -12,18 +12,22 @@ db = client['bookshelf']
 bookc = db['bookful']
 
 ISBNS = []
-with open('/Users/archer/Downloads/织女.csv') as F:
+with open('isbns.csv') as F:
     for line in F:
-        ISBNS.append(line.split(',')[0])
+        # ISBNS.append(line.split(',')[0])
+        ISBNS.append(line.strip('\n'))
 
 print ISBNS
 
 BIDS = []
 for isbn in ISBNS:
     res = bookc.find_one({'isbn13': isbn})
-    print res['bid']
-    BIDS.append(res['bid'])
-
+    if res:
+        print isbn, res['bid']
+        BIDS.append(res['bid'])
+    else:
+        print isbn, 'not hit'
+    
 with open('bids.csv', 'w') as F:
     for bid in BIDS:
         F.write('"' + bid + '",')
