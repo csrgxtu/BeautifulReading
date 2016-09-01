@@ -5,6 +5,17 @@
 # File: CleanLibPublisher.py
 # Desc: 清洗library里面的publisher，清洗规则见teambition上面的数据清洗文档
 # Produced By BR
+
+# db.library.find({publisher: /.*，.*/}).forEach(function(e,i) {
+#   e.publisher = e.publisher.replace('，', ',');
+#   db.library.save(e);
+# });
+#
+# db.library.find({publisher: /.*；.*/}).forEach(function(e,i) {
+#   e.publisher = e.publisher.replace('；', ',');
+#   db.library.save(e);
+# })
+
 import re
 from pymongo import MongoClient
 
@@ -32,6 +43,7 @@ def RearrangePublishers(publishers):
     return newPublishers
 
 client = MongoClient('mongodb://127.0.0.1:27017/')
+# client = MongoClient('mongodb://rio:VFZPhT7y@192.168.200.22:27017/bookshelf')
 db = client['bookshelf']
 libc = db['library']
 

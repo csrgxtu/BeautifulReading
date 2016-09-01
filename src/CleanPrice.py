@@ -8,13 +8,16 @@
 import re
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://127.0.0.1:27017/')
+# client = MongoClient('mongodb://127.0.0.1:27017/')
+client = MongoClient('mongodb://rio:VFZPhT7y@192.168.200.22:27017/bookshelf')
+
 db = client['bookshelf']
 libc = db['library']
 
 countries = []
 
-libs = libc.find({}, {'price': 1})
+# 找出price字段存在的记录，进行更改
+libs = libc.find({'price': {'$exists': 1, '$ne': ''}}, {'price': 1}).batch_size(100)
 print libc.count()
 for lib in libs:
     if not 'price' in lib:
