@@ -14,16 +14,16 @@ db = client['bookshelf']
 bc = db['bookdetail']
 
 # 对于pages不存在的，设置为0
-books = bc.find({'pages': {'$exists': 0}})
-print books.count()
-for book in books:
-    bc.update_one({'_id': book['_id']}, {'$set': {'pages': '0'}})
+# books = bc.find({'pages': {'$exists': 0}})
+# print books.count()
+# for book in books:
+#     bc.update_one({'_id': book['_id']}, {'$set': {'pages': '0'}})
 
 # 对于pages为“”的，设置为0
-books = bc.find({'pages': {'$exists': 1, '$eq': ''}})
-print books.count()
-for book in books:
-    bc.update_one({'_id': book['_id']}, {'$set': {'pages': '0'}})
+# books = bc.find({'pages': {'$exists': 1, '$eq': ''}})
+# print books.count()
+# for book in books:
+#     bc.update_one({'_id': book['_id']}, {'$set': {'pages': '0'}})
 
 # 去除含有汉子"页"和空格的pages
 REGEX = re.compile('[ |页]')

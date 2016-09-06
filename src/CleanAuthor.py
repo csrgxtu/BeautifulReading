@@ -8,6 +8,7 @@
 import re
 from pymongo import MongoClient
 
+# client = MongoClient('mongodb://rio:VFZPhT7y@192.168.200.22:27017/bookshelf')
 client = MongoClient('mongodb://127.0.0.1:27017/')
 db = client['bookshelf']
 bookc = db['bookful']
